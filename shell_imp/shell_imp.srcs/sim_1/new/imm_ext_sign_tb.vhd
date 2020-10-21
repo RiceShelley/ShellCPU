@@ -60,7 +60,7 @@ begin
         wait for 2us;
         imm <= b"1111_1111_111";
         wait for 2us;
-        imm <= b"0000_0000_000";
+        imm <= b"0010_0000_000";
         wait for 2us;
         imm <= b"1000_0000_001";
         wait for 2us;

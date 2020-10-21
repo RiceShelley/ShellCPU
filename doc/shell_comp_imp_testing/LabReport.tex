@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up your information
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subtitle{Component implementation and testing}
+\subtitle{Component Implementation and Testing}
 \title{The Shell CPU}
 \author{Jonathan Rice Shelley II}
 \date{\today}
@@ -20,7 +20,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\stitle}{HDL and Verification}
+\newcommand{\stitle}{Component Verification}
 
 % BEGIN DOCUMENT
 \begin{document}
@@ -38,7 +38,7 @@
 \section{Component Implementation and Testing Overview }
 \label{overview}
 \begin{par}
-	This document details the implementation and testing of each unique component in the Shell CPU. The VHDL for each module is to long to be listed in this document and can be found here \href{http:\\google.com}{link}. 
+	This document details the implementation and testing of each unique component in the Shell CPU. Two additional signals "inr" and "outvalue" have been added to the CPU. The two additional signals were added to view the contents of the register file. The VHDL for each module is to long to be listed and can be found with other documentation \href{https://github.com/RiceShelley/ShellCPU}{here}. 
 \end{par}
 
 \newpage
@@ -142,7 +142,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=7in]{img/alu_tb.png}
-		\caption{Arithmetic Logic Unit}
+		\caption{Arithmetic Logic Unit Testbench}
 		\label{fig:alutbfig}
 	\end{figure}
 
@@ -226,7 +226,7 @@
 	
 	\textbf{\stitle}
 	\begin{par}
-		The comparator status register stores the results of a comparison. The testbench for this component can be seen in Figure \ref{fig:cmpregtb}.
+		The comparator status register stores the results of a comparison. The testbench for this component can be seen in Figure \ref{fig:cmpregtb}. The first clock cycle should not update the value as wr\_en is low. The second clock cycle writes 0xFFFF to the register. The third clock cycle resets the register. The contents of the register are reflected by the signals eq\_sig, ne\_sig, gt\_sig, and lt\_sig. 
 	\end{par}
 
 	\begin{figure}[H]
@@ -253,7 +253,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=5in]{img/immExtTB.png}
+		\includegraphics[width=7in]{img/immExtTB.png}
 		\caption{11-bit Immediate Sign Extend Testbench}
 		\label{fig:immExtTb}
 	\end{figure}
@@ -292,7 +292,7 @@
 	
 	\textbf{\stitle}
 	\begin{par}
-		GPR (General Purpose Register) file is used to store temporary values during computation. The verification of the register file can be seen in Figure \ref{fig:gprtb}.
+		GPR (General Purpose Register) file is used to store temporary values during computation. The verification of the register file can be seen in Figure \ref{fig:gprtb}. The testbench shows multiple writes to the GPR then clocks a synchronous reset. 
 	\end{par} 
 
 	\begin{figure}[H]

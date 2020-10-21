@@ -1,0 +1,125 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
+| Date         : Wed Oct 21 00:05:57 2020
+| Host         : rootie running 64-bit Ubuntu 18.04.5 LTS
+| Command      : report_control_sets -verbose -file design_1_wrapper_control_sets_placed.rpt
+| Design       : design_1_wrapper
+| Device       : xc7a100t
+---------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    54 |
+| Unused register locations in slices containing registers |    31 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            1 |
+|      4 |            1 |
+|      6 |            1 |
+|      7 |            1 |
+|      8 |            5 |
+|      9 |            1 |
+|     13 |            1 |
+|    16+ |           43 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              94 |           38 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |               9 |            4 |
+| Yes          | No                    | No                     |              49 |           20 |
+| Yes          | No                    | Yes                    |              16 |            4 |
+| Yes          | Yes                   | No                     |             145 |           84 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|                   Clock Signal                  |                             Enable Signal                            |                     Set/Reset Signal                    | Slice Load Count | Bel Load Count |
++-------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    | design_1_i/programmer/uart_programmer/U0/addr[15]_i_1_n_0            |                                                         |                2 |              2 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/CTRL_UNIT/cmp_status_wr                               | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |                1 |              4 |
+|  design_1_i/programmer/uart/U0/baud_clk_reg_n_0 |                                                                      |                                                         |                2 |              6 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    | design_1_i/programmer/uart_programmer/U0/FSM_onehot_state[6]_i_1_n_0 |                                                         |                2 |              7 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    | design_1_i/programmer/uart_programmer/U0/cmd                         |                                                         |                3 |              8 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    | design_1_i/programmer/uart_programmer/U0/addr[7]_i_1_n_0             |                                                         |                4 |              8 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    | design_1_i/programmer/uart_programmer/U0/dout[15]_i_1_n_0            |                                                         |                3 |              8 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    | design_1_i/programmer/uart_programmer/U0/delay_cnt[7]_i_1_n_0        |                                                         |                2 |              8 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    | design_1_i/programmer/uart_programmer/U0/dout[7]_i_1_n_0             |                                                         |                4 |              8 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    |                                                                      | design_1_i/programmer/uart/U0/baud_rst                  |                4 |              9 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/stack_ptr_reg/U0/sp_reg_n_0                           | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |                4 |             13 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[1][15]_i_1_n_0                        | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |               10 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[0]_0                                  | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |                7 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[2][15]_i_1_n_0                        | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |               10 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[5][15]_i_1_n_0                        | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |               12 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[4][15]_i_1_n_0                        | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |               10 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[6][15]_i_1_n_0                        | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |               12 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[7][15]_i_1_n_0                        | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |               11 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/reg_file/U0/mem[3][15]_i_1_n_0                        | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |                7 |             16 |
+|  design_1_i/clock_gen/and_gate/c                | design_1_i/CPU/PC/U0/pc[15]_i_1_n_0                                  | design_1_i/programmer/sync_pc_rst_to_cpu_clk/U0/sig_out |                4 |             16 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_64_127_0_2_i_1_n_0             |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_128_191_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_0_63_0_2_i_1_n_0               |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_960_1023_0_2_i_1_n_0           |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_896_959_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_832_895_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_768_831_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_704_767_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_640_703_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_576_639_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_512_575_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_448_511_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_256_319_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_320_383_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_384_447_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/prog_mem/U0/mem_reg_192_255_0_2_i_1_n_0            |                                                         |                6 |             22 |
+|  design_1_i/clock_gen/clk_wiz/inst/CLK100Mhz    |                                                                      |                                                         |               12 |             26 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      |                                                                      |                                                         |               24 |             62 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_128_191_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_512_575_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_832_895_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_704_767_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_192_255_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_64_127_0_2_i_1_n_0          |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_256_319_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_384_447_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_960_1023_0_2_i_1_n_0        |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_448_511_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_0_63_0_2_i_4_n_0            |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_896_959_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_640_703_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_768_831_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_320_383_0_2_i_1_n_0         |                                                         |               22 |             88 |
+|  design_1_i/clock_gen/clk_wiz/inst/CPU_CLK      | design_1_i/memory/data_mem/U0/mem_reg_r1_576_639_0_2_i_1_n_0         |                                                         |               22 |             88 |
++-------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+
+

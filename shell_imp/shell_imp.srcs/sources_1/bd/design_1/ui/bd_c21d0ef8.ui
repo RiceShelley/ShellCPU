@@ -1,0 +1,86 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port stack_wr -pg 1 -y 800 -defaultsOSRD
+preplace port clk -pg 1 -y 840 -defaultsOSRD
+preplace port data_mem_wr -pg 1 -y 340 -defaultsOSRD
+preplace portBus instruction -pg 1 -y 490 -defaultsOSRD
+preplace portBus stack_ptr -pg 1 -y 900 -defaultsOSRD
+preplace portBus from_stack -pg 1 -y 340 -defaultsOSRD
+preplace portBus regA -pg 1 -y 440 -defaultsOSRD
+preplace portBus data_mem -pg 1 -y 320 -defaultsOSRD
+preplace portBus ins_addr -pg 1 -y 690 -defaultsOSRD
+preplace portBus regB -pg 1 -y 1010 -defaultsOSRD
+preplace inst adder_0 -pg 1 -lvl 7 -y 740 -defaultsOSRD
+preplace inst cmp_status_reg -pg 1 -lvl 5 -y 740 -defaultsOSRD
+preplace inst stack_ptr_reg -pg 1 -lvl 9 -y 900 -defaultsOSRD
+preplace inst adder_1 -pg 1 -lvl 6 -y 1070 -defaultsOSRD
+preplace inst reg_file -pg 1 -lvl 8 -y 450 -defaultsOSRD
+preplace inst CTRL_UNIT -pg 1 -lvl 6 -y 570 -defaultsOSRD
+preplace inst ALU_CTRL -pg 1 -lvl 3 -y 170 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 5 -y 1080 -defaultsOSRD
+preplace inst ri_imm_ext -pg 1 -lvl 1 -y 780 -defaultsOSRD
+preplace inst imm_ext -pg 1 -lvl 6 -y 910 -defaultsOSRD
+preplace inst reg_file_input_mux -pg 1 -lvl 7 -y 540 -defaultsOSRD
+preplace inst alu_input_mux -pg 1 -lvl 3 -y 570 -defaultsOSRD
+preplace inst pc_load_mux -pg 1 -lvl 8 -y 620 -defaultsOSRD
+preplace inst ri_imm_format_mux -pg 1 -lvl 2 -y 700 -defaultsOSRD
+preplace inst ri_imm_upper_concat -pg 1 -lvl 1 -y 680 -defaultsOSRD
+preplace inst ALU -pg 1 -lvl 4 -y 150 -defaultsOSRD
+preplace inst PC -pg 1 -lvl 9 -y 690 -defaultsOSRD
+preplace netloc ALU_CTRL_op_or 1 3 1 N
+preplace netloc ALU_CTRL_op_add 1 3 1 N
+preplace netloc ALU_CTRL_op_nand 1 3 1 N
+preplace netloc CTRL_UNIT_reg_file_input_sel 1 6 1 2170
+preplace netloc cmp_status_reg_ne_sig 1 5 1 1710
+preplace netloc CTRL_UNIT_imm 1 5 2 1700 970 2130
+preplace netloc CTRL_UNIT_dec_stack 1 6 3 2200J 670 2560J 710 2960
+preplace netloc ri_imm_format_mux_0_ri_imm 1 2 1 700
+preplace netloc ALU_CTRL_op_asr 1 3 1 N
+preplace netloc ALU_CTRL_op_sub 1 3 1 N
+preplace netloc imm_ext_s_ext_imm 1 6 1 2190J
+preplace netloc stack_ptr_reg_stack_ptr 1 9 1 NJ
+preplace netloc CTRL_UNIT_reg_file_wr 1 6 2 2150J 440 2570
+preplace netloc CTRL_UNIT_alu_op 1 2 5 710 310 NJ 310 NJ 310 NJ 310 2100
+preplace netloc CTRL_UNIT_ri_imm_format_sel 1 1 6 330 850 NJ 850 NJ 850 NJ 850 NJ 850 2090
+preplace netloc ALU_CTRL_op_cmp 1 3 1 N
+preplace netloc CTRL_UNIT_cmp_status_wr 1 4 3 1380 980 NJ 980 2140
+preplace netloc instruction_1 1 0 6 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 1680J
+preplace netloc CTRL_UNIT_inc_stack 1 6 3 2170J 820 NJ 820 2940
+preplace netloc data_mem_1 1 0 7 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 2110J
+preplace netloc CTRL_UNIT_dest_addr 1 6 2 NJ 390 2600
+preplace netloc ALU_CTRL_op_xor 1 3 1 N
+preplace netloc adder_1_c 1 6 1 2180
+preplace netloc ri_imm_upper_concat_0_upper_concat 1 1 1 NJ
+preplace netloc CTRL_UNIT_ri_imm 1 0 7 20 620 NJ 620 690J 650 NJ 650 NJ 650 1690J 810 2120
+preplace netloc CTRL_UNIT_stack_wr 1 6 4 2150J 810 2610J 800 NJ 800 NJ
+preplace netloc cmp_status_in_1 1 4 3 1360 290 NJ 290 2180J
+preplace netloc CTRL_UNIT_regB_addr 1 6 2 NJ 430 2590
+preplace netloc CTRL_UNIT_alu_input_sel 1 2 5 710 830 NJ 830 NJ 830 NJ 830 2100
+preplace netloc from_stack_1 1 0 7 20J 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 2090J
+preplace netloc CTRL_UNIT_pc_load_sel 1 6 2 2150J 640 N
+preplace netloc xlconstant_0_dout 1 5 1 NJ
+preplace netloc clk_1 1 0 9 NJ 840 NJ 840 NJ 840 NJ 840 1370 840 NJ 840 NJ 840 2580 730 3020
+preplace netloc reg_file_input_mux_output_reg 1 7 1 2560
+preplace netloc ALU_CTRL_op_asl 1 3 1 N
+preplace netloc CTRL_UNIT_pc_en 1 6 3 2120J 320 NJ 320 3010
+preplace netloc reg_file_regB 1 2 8 710 340 NJ 340 1350J 300 NJ 300 NJ 300 NJ 300 3030 590 3340J
+preplace netloc CTRL_UNIT_data_mem_wr 1 6 4 2160J 330 NJ 330 3020J 340 NJ
+preplace netloc cmp_status_reg_lt_sig 1 5 1 1730
+preplace netloc cmp_status_reg_eq_sig 1 5 1 1680
+preplace netloc CTRL_UNIT_stack_ld 1 6 3 2150J 660 2570J 720 2950
+preplace netloc CTRL_UNIT_regA_addr 1 6 2 NJ 410 2610
+preplace netloc alu_input_mux_to_alu 1 3 1 1040
+preplace netloc ALU_CTRL_op_and 1 3 1 N
+preplace netloc CTRL_UNIT_pc_ld_en 1 6 3 2140J 420 2570J 340 3000
+preplace netloc adder_0_c 1 7 1 2600
+preplace netloc cmp_status_reg_gt_sig 1 5 1 1720
+preplace netloc pc_load_mux_to_pc_ld 1 8 1 2990
+preplace netloc ri_imm_ext_z_ext_imm 1 1 1 320J
+preplace netloc PC_ins_addr 1 5 5 1700 990 2200 830 NJ 830 2970J 600 3330
+preplace netloc gpr_in_1 1 3 7 1050 640 NJ 640 1700J 820 2160J 650 2610 700 2980 440 NJ
+levelinfo -pg 1 0 170 510 880 1200 1530 1910 2380 2780 3180 3360 -top -10 -bot 1140
+"
+}
+

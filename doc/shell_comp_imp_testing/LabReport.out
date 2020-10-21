@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Contents}{}% 1
+\BOOKMARK [1][-]{section.2}{Component Implementation and Testing Overview }{}% 2
+\BOOKMARK [1][-]{section.3}{Control Unit Verification}{}% 3
+\BOOKMARK [1][-]{section.4}{Component Testing}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Arithmetic Logic Unit}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Simple Adder}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Arithmetic Logic Unit Controller}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Two to One Multiplexer}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.5}{Comparator Status Register}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.6}{11-bit Immediate Sign Extend}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.7}{Program Counter Register}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.8}{General Purpose Register File}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.9}{Register File Input Multiplexer}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.10}{RI-Type Zero Extend Immediate \046 RI-Type Immediate Upper 6-bit Concatenation}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.11}{Stack Pointer Register}{section.4}% 15

@@ -1,0 +1,46 @@
+\BOOKMARK [1][-]{section.1}{Contents}{}% 1
+\BOOKMARK [1][-]{section.2}{Shell Datapath Overview}{}% 2
+\BOOKMARK [1][-]{section.3}{Component Descriptions}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Arithmetic Logic Unit}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Simple Adder}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Arithmetic Logic Unit Controller}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Arithmetic Logic Unit Input Multiplexer}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.5}{Comparator Status Register}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.6}{CPU Control Unit}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.7}{Data Memory}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.8}{11-bit Immediate Sign Extend}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.9}{Program Counter Load Multiplexer}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.10}{Program Counter Register}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.11}{Program Memory}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.12}{General Purpose Register File}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.13}{Register File Input Multiplexer}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.14}{RI-Type Zero Extend Immediate}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.15}{RI-Type Immediate Format Multiplexer}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.16}{RI-Type Immediate Upper 6-bit Concatenation}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.17}{Stack Pointer Register}{section.3}% 20
+\BOOKMARK [1][-]{section.4}{Datapath Register Transfers}{}% 21
+\BOOKMARK [1][-]{section.5}{CPU Control and Operation}{}% 22
+\BOOKMARK [2][-]{subsection.5.1}{Halt S-Type Instruction}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.2}{Add RRR-Type Instruction}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.3}{Sub RRR-Type Instruction}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.4}{And RRR-Type Instruction}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.5}{Or RRR-Type Instruction}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.6}{Xor RRR-Type Instruction}{section.5}% 28
+\BOOKMARK [2][-]{subsection.5.7}{Nand RRR-Type Instruction}{section.5}% 29
+\BOOKMARK [2][-]{subsection.5.8}{Lw RR-Type Instruction}{section.5}% 30
+\BOOKMARK [2][-]{subsection.5.9}{Sw RR-Type Instruction}{section.5}% 31
+\BOOKMARK [2][-]{subsection.5.10}{Asr RR-Type Instruction}{section.5}% 32
+\BOOKMARK [2][-]{subsection.5.11}{Asl RR-Type Instruction}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.12}{Cmp RR-Type Instruction}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.13}{Jalr RR-Type Instruction}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.14}{Push R-Type Instruction}{section.5}% 36
+\BOOKMARK [2][-]{subsection.5.15}{Pop R-Type Instruction}{section.5}% 37
+\BOOKMARK [2][-]{subsection.5.16}{Lsp R-Type Instruction}{section.5}% 38
+\BOOKMARK [2][-]{subsection.5.17}{Addi RI-Type Instruction}{section.5}% 39
+\BOOKMARK [2][-]{subsection.5.18}{Subi RI-Type Instruction}{section.5}% 40
+\BOOKMARK [2][-]{subsection.5.19}{Lui RI-Type Instruction}{section.5}% 41
+\BOOKMARK [2][-]{subsection.5.20}{Beq B-Type Instruction}{section.5}% 42
+\BOOKMARK [2][-]{subsection.5.21}{Bne B-Type Instruction}{section.5}% 43
+\BOOKMARK [2][-]{subsection.5.22}{Bgt B-Type Instruction}{section.5}% 44
+\BOOKMARK [2][-]{subsection.5.23}{Blt B-Type Instruction}{section.5}% 45
+\BOOKMARK [1][-]{section.6}{Design Tradeoffs}{}% 46

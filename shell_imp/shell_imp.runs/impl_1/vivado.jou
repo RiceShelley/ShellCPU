@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 21 00:03:38 2020
+# Process ID: 30199
+# Current directory: /home/rootie/Documents/comp-arc/shell_imp/shell_imp.runs/impl_1
+# Command line: vivado -log design_1_wrapper.vdi -applog -tempDir /home/rootie/.vivado -product Vivado -messageDb vivado.pb -mode batch -source design_1_wrapper.tcl -notrace
+# Log file: /home/rootie/Documents/comp-arc/shell_imp/shell_imp.runs/impl_1/design_1_wrapper.vdi
+# Journal file: /home/rootie/Documents/comp-arc/shell_imp/shell_imp.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace

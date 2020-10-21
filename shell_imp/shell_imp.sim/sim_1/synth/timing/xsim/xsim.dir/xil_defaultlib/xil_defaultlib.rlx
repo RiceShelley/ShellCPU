@@ -1,0 +1,7 @@
+0.6
+2018.3
+Dec  6 2018
+23:39:36
+/home/rootie/Documents/comp-arc/shell_imp/shell_imp.sim/sim_1/synth/timing/xsim/cpu_ctrl_tb_time_synth.v,1601956494,verilog,,,,CPU_imp_1IDDXJS;design_1;design_1_ALU_0_0;design_1_ALU_0_0_ALU;design_1_ALU_CTRL_0_0;design_1_ALU_CTRL_0_0_ALU_CTRL;design_1_CTRL_UNIT_0_0;design_1_adder_0_0;design_1_adder_0_0_adder;design_1_adder_1_0;design_1_adder_1_0_adder;design_1_alu_input_mux_0_0;design_1_alu_input_mux_0_0_alu_input_mux;design_1_cmp_status_reg_0_0;design_1_cmp_status_reg_0_0_cmp_status_reg;design_1_data_mem_0_0;design_1_data_mem_0_0_data_mem;design_1_imm_ext_0_0;design_1_pc_load_mux_0_0;design_1_pc_load_mux_0_0_pc_load_mux;design_1_prog_cnt_reg_0_0;design_1_prog_cnt_reg_0_0_prog_cnt_reg;design_1_prog_mem_0_0;design_1_reg_file_0_0;design_1_reg_file_0_0_reg_file;design_1_reg_file_input_mux_0_0;design_1_reg_file_input_mux_0_0_reg_file_input_mux;design_1_ri_imm_ext_0_0;design_1_ri_imm_format_mux_0_0;design_1_ri_imm_format_mux_0_0_ri_imm_format_mux;design_1_ri_imm_upper_concat_0_0;design_1_stack_ptr_reg_0_0;design_1_stack_ptr_reg_0_0_stack_ptr_reg;design_1_wrapper;design_1_xlconstant_0_0;glbl;memory_imp_1RJ1PXL,,,,,,,,
+/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sim_1/new/cpu_ctrl_tb.vhd,1601950032,vhdl,,,,cpu_ctrl_tb,,,,,,,,
+/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/CTRL_UNIT.vhd,1601956124,vhdl,,,,ctrl_unit,,,,,,,,

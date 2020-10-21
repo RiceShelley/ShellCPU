@@ -1,0 +1,29 @@
+\BOOKMARK [1][-]{section.1}{Contents}{}% 1
+\BOOKMARK [1][-]{section.2}{Shell ISA Overview}{}% 2
+\BOOKMARK [1][-]{section.3}{Register mapping and suggested usage conventions}{}% 3
+\BOOKMARK [1][-]{section.4}{Unique instructions}{}% 4
+\BOOKMARK [1][-]{section.5}{Instruction definitions}{}% 5
+\BOOKMARK [2][-]{subsection.5.1}{RRR-Type instructions}{section.5}% 6
+\BOOKMARK [2][-]{subsection.5.2}{RR-Type instructions}{section.5}% 7
+\BOOKMARK [2][-]{subsection.5.3}{R-Type instructions}{section.5}% 8
+\BOOKMARK [2][-]{subsection.5.4}{RI-Type instructions}{section.5}% 9
+\BOOKMARK [2][-]{subsection.5.5}{B-Type instructions}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.6}{S-Type instructions}{section.5}% 11
+\BOOKMARK [1][-]{section.6}{Programmers assembly reference}{}% 12
+\BOOKMARK [1][-]{section.7}{Common C language constructs compiled in assembly}{}% 13
+\BOOKMARK [2][-]{subsection.7.1}{Assignment}{section.7}% 14
+\BOOKMARK [2][-]{subsection.7.2}{Addition}{section.7}% 15
+\BOOKMARK [2][-]{subsection.7.3}{Subtraction}{section.7}% 16
+\BOOKMARK [2][-]{subsection.7.4}{Logical operations}{section.7}% 17
+\BOOKMARK [2][-]{subsection.7.5}{For loop control structure}{section.7}% 18
+\BOOKMARK [2][-]{subsection.7.6}{while loop control structure}{section.7}% 19
+\BOOKMARK [2][-]{subsection.7.7}{if-else control structure}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.8}{Relational operator "=="}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.9}{Relational operator "!="}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.10}{Relational operator less than}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.11}{Relational operator greater than}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.12}{Relational operator greater than or equal to}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.13}{Relational operator less than or equal to}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.14}{Functions \(call and return\) pass by value}{section.7}% 27
+\BOOKMARK [2][-]{subsection.7.15}{Functions \(call and return\) pass by reference}{section.7}% 28
+\BOOKMARK [1][-]{section.8}{Instruction usage and justification.}{}% 29

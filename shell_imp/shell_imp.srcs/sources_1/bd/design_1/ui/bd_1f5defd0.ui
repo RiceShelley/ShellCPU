@@ -1,0 +1,115 @@
+{
+   "ExpandedHierarchyInLayout":"/CPU",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port UART_TXD_IN -pg 1 -y 340 -defaultsOSRD
+preplace port UART_RXD_OUT -pg 1 -y 470 -defaultsOSRD
+preplace port CLK100MHZ -pg 1 -y 70 -defaultsOSRD
+preplace portBus outvalue -pg 1 -y 720 -defaultsOSRD
+preplace portBus inr -pg 1 -y 1320 -defaultsOSRD
+preplace inst CPU|ri_imm_ext -pg 1 -lvl 1 -y 1180 -defaultsOSRD
+preplace inst CPU|imm_mux -pg 1 -lvl 2 -y 1100 -defaultsOSRD
+preplace inst CPU|reg_file_input_mux -pg 1 -lvl 7 -y 750 -defaultsOSRD
+preplace inst programmer -pg 1 -lvl 1 -y 340 -defaultsOSRD
+preplace inst CPU -pg 1 -lvl 4 -y 620 -defaultsOSRD
+preplace inst CPU|cmp_status_reg -pg 1 -lvl 5 -y 910 -defaultsOSRD
+preplace inst CPU|imm_ext -pg 1 -lvl 6 -y 1240 -defaultsOSRD
+preplace inst CPU|xlconstant_val_1 -pg 1 -lvl 5 -y 1410 -defaultsOSRD
+preplace inst CPU|CTRL_UNIT -pg 1 -lvl 6 -y 900 -defaultsOSRD
+preplace inst CPU|adder_0 -pg 1 -lvl 7 -y 1220 -defaultsOSRD
+preplace inst CPU|PC -pg 1 -lvl 9 -y 800 -defaultsOSRD
+preplace inst CPU|ALU_CTRL -pg 1 -lvl 3 -y 830 -defaultsOSRD
+preplace inst CPU|adder_1 -pg 1 -lvl 6 -y 1400 -defaultsOSRD
+preplace inst CPU|ALU -pg 1 -lvl 4 -y 810 -defaultsOSRD
+preplace inst CPU|pc_load_mux -pg 1 -lvl 8 -y 930 -defaultsOSRD
+preplace inst CPU|reg_file -pg 1 -lvl 8 -y 660 -defaultsOSRD
+preplace inst memory -pg 1 -lvl 3 -y 260 -defaultsOSRD
+preplace inst CPU|ri_imm_upper_concat -pg 1 -lvl 1 -y 1080 -defaultsOSRD
+preplace inst clock_gen -pg 1 -lvl 2 -y 80 -defaultsOSRD
+preplace inst CPU|alu_mux -pg 1 -lvl 3 -y 1080 -defaultsOSRD
+preplace inst CPU|stack_ptr_reg -pg 1 -lvl 9 -y 1010 -defaultsOSRD
+preplace netloc clk_2 1 0 3 30 160 NJ 160 640
+preplace netloc prog_data_1 1 1 2 350 290 NJ
+preplace netloc CPU|CTRL_UNIT_regA_addr 1 6 2 3040 610 NJ
+preplace netloc CPU|CTRL_UNIT_pc_en 1 6 3 NJ 860 3490J 840 NJ
+preplace netloc CPU|CTRL_UNIT_ri_imm_format_sel 1 1 6 1480 1180 NJ 1180 NJ 1180 NJ 1180 NJ 1180 3030
+preplace netloc stack_addr_1 1 2 3 630 440 NJ 440 4420
+preplace netloc programmer_UART_RXD_OUT 1 1 4 330J 400 600J 470 NJ 470 NJ
+preplace netloc CPU|mux_2_to_1_0_c1 1 8 1 3900
+preplace netloc CPU|CTRL_UNIT_alu_op 1 2 5 1700 690 1990J 980 2340J 650 NJ 650 3010
+preplace netloc CPU|adder_1_c 1 6 1 3100
+preplace netloc UART_TXD_IN_1 1 0 1 NJ
+preplace netloc CPU|ALU_CTRL_op_or 1 3 1 N
+preplace netloc clock_gen_clk_100Mhz 1 0 3 20 150 NJ 150 630
+preplace netloc prog_mode_2 1 1 2 N 330 NJ
+preplace netloc CPU|CTRL_UNIT_alu_input_sel 1 2 5 1730 1170 NJ 1170 NJ 1170 NJ 1170 3050
+preplace netloc CPU|gpr_in_1 1 3 7 2020 1300 NJ 1300 NJ 1300 3110J 1290 3520 1010 3860 700 NJ
+preplace netloc CPU|xlconstant_0_dout 1 5 1 NJ
+preplace netloc programmer_cpu_clk_en 1 1 1 340
+preplace netloc CPU|ALU_CTRL_op_and 1 3 1 N
+preplace netloc CPU|CTRL_UNIT_dec_stack 1 6 3 3080J 1030 NJ 1030 3920J
+preplace netloc CPU|mux_2_to_1_0_c 1 2 1 1710
+preplace netloc CPU|reg_file_outvalue 1 8 2 3870J 690 4230J
+preplace netloc CPU|ri_imm_ext_z_ext_imm 1 1 1 1470J
+preplace netloc CPU|CTRL_UNIT_stack_wr 1 6 4 3090J 1120 NJ 1120 NJ 1120 4260J
+preplace netloc CPU|ALU_CTRL_op_nand 1 3 1 N
+preplace netloc CPU|ALU_CTRL_op_add 1 3 1 N
+preplace netloc CPU|CTRL_UNIT_pc_ld_en 1 6 3 3060J 850 3480J 830 3910J
+preplace netloc CPU|stack_ptr_reg_stack_ptr 1 9 1 4220
+preplace netloc CPU|mux_2_to_1_1_c 1 3 1 2010
+preplace netloc memory_stack_out 1 3 1 970
+preplace netloc CPU|inr_1 1 0 8 NJ 1320 NJ 1320 NJ 1320 NJ 1320 NJ 1320 NJ 1320 NJ 1320 3510
+preplace netloc CPU|reg_file_regB 1 2 8 1720 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 3880 680 NJ
+preplace netloc prog_data1_1 1 1 2 N 350 NJ
+preplace netloc stack_wr_en_1 1 2 3 650 450 NJ 450 4460
+preplace netloc CPU_outvalue 1 4 1 NJ
+preplace netloc CPU|cmp_status_reg_ne_sig 1 5 1 N
+preplace netloc async_rst_1 1 1 3 NJ 430 590J 480 950
+preplace netloc programmer_sig_out2 1 1 2 N 390 NJ
+preplace netloc CPU|instruction_1 1 0 6 NJ 600 NJ 600 NJ 600 NJ 600 NJ 600 2650
+preplace netloc wr_en_1 1 2 3 640 460 NJ 460 4450
+preplace netloc CPU|CTRL_UNIT_stack_ld 1 6 3 3090J 1020 NJ 1020 3910J
+preplace netloc CPU|clk_1 1 0 9 1170J 670 NJ 670 NJ 670 2000J 970 2320 610 NJ 610 3020J 600 3530 790 3920
+preplace netloc CPU|ri_imm_upper_concat_0_upper_concat 1 1 1 NJ
+preplace netloc CPU|CTRL_UNIT_cmp_status_wr 1 4 3 2350 1150 NJ 1150 3070
+preplace netloc CPU|CTRL_UNIT_pc_load_sel 1 6 2 NJ 980 3540J
+preplace netloc CPU|cmp_status_reg_lt_sig 1 5 1 N
+preplace netloc CPU|CTRL_UNIT_data_mem_wr 1 6 4 NJ 880 3540J 850 3910J 900 4240J
+preplace netloc CPU|CTRL_UNIT_inc_stack 1 6 3 NJ 1040 NJ 1040 NJ
+preplace netloc CPU|imm_ext_s_ext_imm 1 6 1 3060J
+preplace netloc CPU|data_mem_1 1 0 7 1160J 630 NJ 630 NJ 630 NJ 630 NJ 630 NJ 630 3030
+preplace netloc inr_1 1 0 4 NJ 1320 NJ 1320 NJ 1320 NJ
+preplace netloc prog_addr_1 1 1 2 N 270 NJ
+preplace netloc CPU|PC_ins_addr 1 5 5 2650 1330 3120 1300 NJ 1300 NJ 1300 4250
+preplace netloc CPU|async_rst_1 1 0 9 NJ 660 NJ 660 NJ 660 1990J 650 2330 620 NJ 620 3060J 650 3490 800 3890
+preplace netloc PC_ins_addr 1 2 3 650 70 NJ 70 4470
+preplace netloc CPU|from_stack_1 1 0 7 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 3020
+preplace netloc CPU|CTRL_UNIT_reg_file_input_sel 1 6 1 3090
+preplace netloc CPU|CTRL_UNIT_dest_addr 1 6 2 3050 630 3510J
+preplace netloc CPU|CTRL_UNIT_regB_addr 1 6 2 3070 620 3540J
+preplace netloc CPU|ALU_CTRL_op_asl 1 3 1 N
+preplace netloc CPU|ALU_CTRL_op_sub 1 3 1 N
+preplace netloc CPU|CTRL_UNIT_imm 1 5 2 2650 1140 3010
+preplace netloc CPU|CTRL_UNIT_ri_imm 1 0 7 1160 1020 NJ 1020 1700J 1160 NJ 1160 NJ 1160 NJ 1160 3060
+preplace netloc prog_addr1_1 1 1 2 N 310 NJ
+preplace netloc CPU|cmp_status_reg_eq_sig 1 5 1 N
+preplace netloc CPU|cmp_status_in_1 1 4 3 2350 660 NJ 660 3100J
+preplace netloc CPU|ALU_CTRL_op_xor 1 3 1 N
+preplace netloc prog_wr1_1 1 1 2 N 370 NJ
+preplace netloc memory_data_out 1 3 1 960
+preplace netloc reg_file_regA 1 2 3 610 500 NJ 500 4430
+preplace netloc CPU|ALU_CTRL_op_cmp 1 3 1 N
+preplace netloc CPU|ALU_CTRL_op_asr 1 3 1 N
+preplace netloc CPU|cmp_status_reg_gt_sig 1 5 1 N
+preplace netloc CPU|CTRL_UNIT_reg_file_wr 1 6 2 3080 640 3500J
+preplace netloc reg_file_regB 1 2 3 620 490 NJ 490 4440
+preplace netloc CPU|reg_file_input_mux_output_reg 1 7 1 3480
+preplace netloc CLK100MHZ_2 1 0 2 NJ 70 NJ
+preplace netloc CPU|adder_0_c 1 7 1 3530
+preplace netloc memory_cur_ins 1 3 1 980
+preplace netloc clk_1 1 2 2 NJ 60 990
+levelinfo -pg 1 0 180 470 800 1250 4490 -top 0 -bot 1490
+levelinfo -hier CPU * 1320 1590 1860 2170 2500 2830 3300 3700 4070 *
+"
+}
+0

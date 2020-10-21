@@ -1,0 +1,3 @@
+gpio 		0x0000
+sp 		0x0001
+my_var 		0x0002

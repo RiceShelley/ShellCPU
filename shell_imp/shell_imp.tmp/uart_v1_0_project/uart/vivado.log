@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Apr  1 17:06:16 2020
+# Process ID: 26978
+# Current directory: /home/rootie
+# Command line: vivado -log /home/rootie/.vivado/vivado.log -journal /home/rootie/.vivado/vivado.jou -tempDir /home/rootie/.vivado
+# Log file: /home/rootie/.vivado/vivado.log
+# Journal file: /home/rootie/.vivado/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project managed_ip_project /home/rootie/Documents/projects/uart/uart.ip_user_files/managed_ip_project -part xc7k70tfbv676-1 -ip
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.3/data/ip'.
+set_property target_simulator XSim [current_project]
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+set_property  ip_repo_paths  /home/rootie/Documents/projects/uart/uart.ip_user_files [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/rootie/Documents/projects/uart/uart.ip_user_files'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository '/home/rootie/Documents/projects/uart/uart.ip_user_files' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is '/home/rootie/Documents/projects/uart/uart.ip_user_files/managed_ip_project'.)
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+set_property  ip_repo_paths  {} [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+set_property  ip_repo_paths  /home/rootie/Documents/projects/uart/uart.srcs [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/rootie/Documents/projects/uart/uart.srcs'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+set_property  ip_repo_paths  {} [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.

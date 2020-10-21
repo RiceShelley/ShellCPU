@@ -1,0 +1,581 @@
+\documentclass{article}
+\usepackage{lib/setup}
+\addbibresource{mybibliography.bib}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set up your information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subtitle{Instruction Set Architecture}
+\title{The Shell}
+\author{Jonathan Rice Shelley II}
+\date{\today}
+\headerTitle{Shell ISA}
+\subject{Version 1.0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% BEGIN DOCUMENT
+\begin{document}
+\maketitle
+
+\section{Contents}
+\begin{par}
+	\begin{enumerate}
+	\item \nameref{overview}
+	\item \nameref{regmap}
+	\item \nameref{uins}
+	\item \nameref{id}
+	\item \nameref{progref} 
+	\item \nameref{commonC}
+	\item \nameref{insuj}
+	\end{enumerate}
+\end{par}
+
+\section{Shell ISA Overview}
+\label{overview}
+\begin{par}
+	The Shell ISA follows RISC design principles and is intended for a new 16-bit microprocessor. The primary goals are low cost implementation and minimal clock cycles per instruction. The Shell ISA contains 8 unique instructions encoded by a 3-bit op code. Multiple encodings of instructions results in 23 assembly instructions made available to the programmer. 16 bit data words (2's complement) and instructions are used exclusively in the microprocessor design. The programmer has access to 7 programmable registers in addition to an 8th register that is always zero. All programmer accessible registers are one word in length or 16 bits. Linear addressing of 1K 16-bit word-addressable only memory is supported. 
+\end{par}
+
+\section{Register mapping and suggested usage conventions}
+\label{regmap}
+\begin{par}
+	The table below list the user addressable registers and their intended use. In addition to the 8 registers provided, the programmer can also interact with the stack pointer register via the lsp (load stack pointer) instruction. The programmer is only required to initialize the stack pointer updating the SP's value on push and pull is handled in hardware. 
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{GPR address} & \textbf{Register} & \textbf{Description} \\
+			\hline 
+			000 & r0 & always zero \\
+			\hline 
+			001 & r1 & general purpose \\
+			\hline 
+			010 & r2 & general purpose \\
+			\hline 
+			011 & r3 & general purpose \\
+			\hline 
+			100 & r4 & general purpose \\
+			\hline 
+			101 & r5 & size of stack frame \\
+			\hline 
+			110 & r6 & subroutine return register \\
+			\hline 
+			111 & r7 & subroutine return address \\
+			\hline 
+		\end{tabular}
+	\end{center}		
+\end{par}
+
+\newpage
+
+\section{Unique instructions}
+\label{uins}
+\begin{par}
+	The 8 unique instructions supported by the ISA are listed below. 
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Instruction opcode} & \textbf{Description} \\
+			\hline 
+			000 & System commands (halt) \\
+			\hline 
+			001 & Branching instructions \\
+			\hline
+			010 & Jump and link register \\
+			\hline
+			011 & Load upper immediate \\
+			\hline
+			100 & Store word \\
+			\hline
+			101 & Load word \\
+			\hline
+			110 & ALU instructions \\
+			\hline
+			111 & Stack instructions \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+\end{par}
+
+\section{Instruction definitions}
+\label{id}
+\begin{par}
+	All hardware instructions are listed below by their instruction type. x's in bit fields denote a value assigned by the programmer. 
+	\subsection{RRR-Type instructions}
+	The RRR-type instruction group is responsible for encoding instructions that require 3 registers. The instruction type has a 4 bit function field to support additional formats. The majority of RRR-type instructions are ALU related. 
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline 
+			& \multicolumn{5}{|c|}{\textbf{16 bit instruction encoding}} \\ 
+			\hline
+			\textbf{Mnemonic \& operands } & \textbf{OP code} & \textbf{Func 4} & \textbf{Dest register} & \textbf{Register operand 1} & \textbf{Register operand 2} \\
+			\hline 
+			add $ R_{1} $, $ R_{2} $, $ R_{3} $ & 110 & 0000 & xxx & xxx & xxx \\ 
+			\hline 
+			sub $ R_{1} $, $ R_{2} $, $ R_{3} $ & 110 & 0001 & xxx & xxx & xxx  \\ 
+			\hline 
+			and $ R_{1} $, $ R_{2} $, $ R_{3} $ & 110 & 0010 & xxx & xxx & xxx  \\ 
+			\hline 
+			or $ R_{1} $, $ R_{2} $, $ R_{3} $ & 110 & 0011 & xxx & xxx & xxx  \\ 
+			\hline 
+			xor $ R_{1} $, $ R_{2} $, $ R_{3} $ & 110 & 0100 & xxx & xxx & xxx  \\ 
+			\hline 
+			nand $ R_{1} $, $ R_{2} $, $ R_{3} $ & 110 & 0101 & xxx & xxx & xxx  \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+
+	\newpage
+
+	\subsection{RR-Type instructions}
+	The RR-type instruction group encodes two registers. The instruction type has a 4 bit function field to support additional instruction encodings. 
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline 
+			& \multicolumn{5}{|c|}{\textbf{16 bit instruction encoding}} \\ 
+			\hline
+			\textbf{Mnemonic \& operands} & \textbf{OP code} & \textbf{Function 4} & \textbf{Destination register} & \textbf{Source register} & \textbf{Zero padding} \\
+			\hline 
+			lw $ R_{1} $, $ R_{2} $ & 101 & 0000 & xxx & xxx & 000 \\ 
+			\hline 
+			sw $ R_{1} $, $ R_{2} $ & 100 & 0000 & xxx & xxx & 000 \\ 
+			\hline 
+			asr $ R_{1} $, $ R_{2} $ & 110 & 0110 & xxx & xxx & 000 \\ 
+			\hline
+			asl $ R_{1} $, $ R_{2} $ & 110 & 0111 & xxx & xxx & 000 \\ 
+			\hline
+			cmp $ R_{1} $, $ R_{2} $ & 110 & 1010 & xxx & xxx & 000 \\ 
+			\hline
+			jalr $ R_{1} $, $ R_{2} $ & 010 & 0000 & xxx & xxx & 000 \\ 
+			\hline
+		\end{tabular} 
+	\end{center}
+
+	\subsection{R-Type instructions}
+	The R-type instruction group encodes one register. The instruction group has a 4 bit function field to support additional instruction encodings. 
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline 
+			& \multicolumn{5}{|c|}{\textbf{16 bit instruction encoding}} \\ 
+			\hline
+			\textbf{Mnemonic \& operands} & \textbf{OP code} & \textbf{Function 4} & \textbf{Operand register} & \multicolumn{2}{|c|}{\textbf{Zero padding}} \\
+			\hline 
+			push $ R_{1} $ & 111 & 0000 & xxx & \multicolumn{2}{|c|}{000000} \\ 
+			\hline 
+			pop $ R_{1} $ & 111 & 0001 & xxx & \multicolumn{2}{|c|}{000000} \\ 
+			\hline 
+			lsp $ R_{1} $ & 111 & 0010 & xxx & \multicolumn{2}{|c|}{000000} \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+
+	\subsection{RI-Type instructions}
+	The RI-type instruction group supports register immediate operations. The immediate operand must be less than 6 bits in length. The instruction group has a 4 bit function field to support additional instruction encodings. 
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline 
+			& \multicolumn{5}{|c|}{\textbf{16 bit instruction encoding}} \\ 
+			\hline
+			\textbf{Mnemonic \& operands} & \textbf{OP code} & \textbf{Function 4} & \textbf{Operand register} & \multicolumn{2}{|c|}{\textbf{Immediate operand}} \\
+			\hline 
+			addi $ R_{1} $, $ imm $ & 110 & 1000 & xxx & \multicolumn{2}{|c|}{xxxxxx} \\ 
+			\hline 
+			subi $ R_{1} $, $ imm $ & 110 & 1001 & xxx & \multicolumn{2}{|c|}{xxxxxx} \\ 
+			\hline 
+			lui $ R_{1} $, $ imm $ & 011 & 0000 & xxx & \multicolumn{2}{|c|}{xxxxxx} \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+
+	\newpage
+
+	\subsection{B-Type instructions}
+	The B-type instruction group contains branching instructions. The group encodes an 11 bit signed immediate used to specify branch distance relative to the PC. The instruction group has a 2 bit function field to support additional instruction encodings. 
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline 
+			& \multicolumn{5}{|c|}{\textbf{16 bit instruction encoding}} \\ 
+			\hline
+			\textbf{Mnemonic \& operands} & \textbf{OP code} & \textbf{Function 2} & \multicolumn{3}{|c|}{\textbf{Immediate address operand}} \\
+			\hline 
+			beq $ imm $ & 001 & 00 & \multicolumn{3}{|c|}{xxxxxxxxxxx} \\ 
+			\hline 
+			bne $ imm $ & 001 & 01 & \multicolumn{3}{|c|}{xxxxxxxxxxx} \\ 
+			\hline 
+			bgt $ imm $ & 001 & 10 & \multicolumn{3}{|c|}{xxxxxxxxxxx} \\ 
+			\hline 
+			blt $ imm $ & 001 & 11 & \multicolumn{3}{|c|}{xxxxxxxxxxx} \\ 
+			\hline 
+		\end{tabular}
+	\end{center}
+
+	\subsection{S-Type instructions}
+	The S-type instruction group contains system commands. The group consist only of an opcode field followed by a 13 bit function field.
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline 
+			& \multicolumn{5}{|c|}{\textbf{16 bit instruction encoding}} \\ 
+			\hline
+			\textbf{Mnemonic \& operands} & \textbf{OP code} & \multicolumn{4}{|c|}{\textbf{Function 13}} \\
+			\hline 
+			hlt & 000 & \multicolumn{4}{|c|}{0000000000000} \\ 
+			\hline 
+		\end{tabular}
+	\end{center}
+\end{par}
+
+\newpage
+
+\section{Programmers assembly reference}
+\label{progref}
+The table below list all available assembly instructions. This table serves as a quick reference for system programmers. \nameref{id} section should be referenced for the assembly instructions binary encoding. 
+\begin{par}
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{No.} & \textbf{Mnemonic} & \textbf{Description} \\
+			\hline 
+			1 & hlt & Halts program execution \\
+			\hline 
+			2 & add $ R_{1} $, $ R_{2} $, $ R_{3} $ & adds contents of registers $ R_{2} $ and $ R_{3} $ result stored in $ R_{1} $ \\
+			\hline
+			3 & sub $ R_{1} $, $ R_{2} $, $ R_{3} $ & subtracts contents of registers $ R_{2} $ and $ R_{3} $ result stored in $ R_{1} $ \\
+			\hline
+			4 & and $ R_{1} $, $ R_{2} $, $ R_{3} $ & logical and the contents of registers $ R_{2} $ and $ R_{3} $ result stored in $ R_{1} $ \\
+			\hline
+			5 & or $ R_{1} $, $ R_{2} $, $ R_{3} $ & logical or the contents of registers $ R_{2} $ and $ R_{3} $ result stored in $ R_{1} $ \\
+			\hline
+			6 & xor $ R_{1} $, $ R_{2} $, $ R_{3} $ & logical xor the contents of registers $ R_{2} $ and $ R_{3} $ result stored in $ R_{1} $ \\
+			\hline
+			7 & nand $ R_{1} $, $ R_{2} $, $ R_{3} $ & logical nand the contents of registers $ R_{2} $ and $ R_{3} $ result stored in $ R_{1} $ \\
+			\hline
+			8 & lw $ R_{1} $, $ R_{2} $ & 16-bit word in memory at address $ R_{2} $ loaded in register $ R_{1} $ \\
+			\hline
+			9 & sw $ R_{1} $, $ R_{2} $ & contents of register $ R_{1} $ stored at memory address $ R_{2} $ \\
+			\hline
+			10 & asr $ R_{1} $, $ R_{2} $ & arithmetic shift right $ R_{2} $ store result in $ R_{1} $ \\
+			\hline
+			11 & asl $ R_{1} $, $ R_{2} $ & arithmetic shift left $ R_{2} $ store result in $ R_{1} $ \\
+			\hline
+			12 & cmp $ R_{1} $, $ R_{2} $ & compare register $ R_{1} $ with register $ R_{2} $ results stored in status register \\
+			\hline
+			13 & jalr $ R_{1} $, $ R_{2} $ & jump to address in register $ R_{2} $ store current address + 1 in register $ R_{1} $ \\
+			\hline
+			14 & push $ R_{1} $ & push contents of register $ R_{1} $ onto stack \\
+			\hline
+			15 & pop $ R_{1} $ & pop 16-bit word off stack into register $ R_{1} $ \\
+			\hline
+			16 & lsp $ R_{1} $ & (load stack pointer) contents of register $ R_{1} $ transferred into stack pointer \\
+			\hline
+			17 & addi $ R_{1} $, $ imm $ & add immediate to $ R_{1} $ store result in $ R_{1} $  \\
+			\hline
+			18 & subi $ R_{1} $, $ imm $ & subtract immediate from $ R_{1} $ store result in $ R_{1} $  \\
+			\hline
+			19 & lui $ R_{1} $, $ imm $ & load upper immediate 10 bits then zero bottom 6 bits of register $ R_{1} $. \\
+			\hline
+			20 & beq $ imm $ & branch if last comparison instruction (No. 12) indicated $ R_{1} $ == $ R_{2} $ \\
+			\hline
+			21 & bne $ imm $ & branch if last comparison instruction (No. 12) indicated $ R_{1} $ != $ R_{2} $ \\
+			\hline
+			22 & bgt $ imm $ & branch if last comparison instruction (No. 12) indicated $ R_{1} > R_{2} $ \\
+			\hline
+			23 & blt $ imm $ & branch if last comparison instruction (No. 12) indicated $ R_{1} < R_{2} $ \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{par}
+
+\newpage
+
+\section{Common C language constructs compiled in assembly}
+Listed below are common C language constructs and how they would be implemented in the Shell ISA. \\
+\textbf{Note:} Information inside asterisks is a comment. 
+\label{commonC}
+\begin{par}
+	
+	\subsection{Assignment}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			x = 5; & xor r3, r3, r3 \\
+			& addi r3, 5 \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Addition}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			x = x + y; & add r3, r3, r4 \\
+			x = y + y; & add r3, r4, r4 \\
+			y = x + x; & add r4, r3, r3 \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Subtraction}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			x = x - y; & sub r3, r3, r4 \\
+			x = y - y; & sub r3, r4, r4 \\
+			y = x - x; & sub r4, r3, r3 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\subsection{Logical operations}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			x = x \& y; & and r3, r3, r4 \\
+			x = x $ \vert $ y; & or r3, r3, r4 \\
+			x = y \^{} y; & xor r3, r3, r4 \\
+			y = \~{} (y \& x); & nand r3, r3, r4 \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{For loop control structure}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			int i; & xor r1, r1, r1 \\
+			int x = 0; & xor r2, r2, r2 \\
+			for (i = 0; i $ < $ 3; i++) \{ & xor r3, r3, r3 \\
+			x = x + 1; & addi r3, 3 \\
+			\} & addi r2, 1 \\
+			& addi r1, 1  \\
+			& cmp r1, r3 \\
+			& blt -3 \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{while loop control structure}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			int x = 0; & xor r1, r1, r1 \\
+			while(1) \{ & xor r2, r2, r2 \\
+			x = x + 1; & addi r2, 3 \\
+			\} & addi r1, 1 \\
+			& jalr r7, r2 \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{if-else control structure}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			if (x == 0) \{ & cmp r1, r0 \\
+				*do this* & bnq 5 \\
+			\} else \{ & *do this* \\
+				*do this* & xor r3, r3, r3 \\
+			\} & addi r3, 8 \\
+			& jalr r7, r3 \\
+			& *do this* \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Relational operator "=="}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			if (x == y) \{ & cmp r1, r2 \\
+			\} & beq *PC relative immediate address of a label* \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Relational operator "!="}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			if (x != y) \{ & cmp r1, r2 \\
+			\} & bne *PC relative immediate address of a label* \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Relational operator less than}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			if (x $ < $ y) \{ & cmp r1, r2 \\
+			\} & blt *PC relative immediate address of a label* \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Relational operator greater than}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			if (x $ > $ y) \{ & cmp r1, r2 \\
+			\} & bgt *PC relative immediate address of a label* \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Relational operator greater than or equal to}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			if (x $ >= $ y) \{ & cmp r1, r2 \\
+			\} & bgt *PC relative immediate address of a label* \\
+			& bge *PC relative immediate address of a label* \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Relational operator less than or equal to}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			if (x $ <= $ y) \{ & cmp r1, r2 \\
+			\} & blt *PC relative immediate address of a label* \\
+			& bge *PC relative immediate address of a label* \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Functions (call and return) pass by value}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			int foo(int a, int b) \{ & xor r1, r1, r1 \\
+				return a + b; & xor r2, r2, r2 \\
+			\} & xor r3, r3, r3 \\
+			int main() \{ & addi r1, 3 \\
+				foo(3, 3); & addi r2, 3 \\
+			\} & addi r3, 50 \\
+			& lsp r3 \\
+			& xor r3, r3, r3 \\
+			& addi r3, *calculated address of foo label* \\
+			& push r1 \\
+			& push r2 \\
+			& jalr r7, r3 \\
+			& pop r1 \\
+			& xor r3, r3, r3 \\
+			& addi r3, *calculated address of exit label* \\
+			& jalr r7, r3 \\
+			& foo: \\
+			& pop r1 \\
+			& pop r2 \\
+			& add r1, r1, r2 \\
+			& push r1 \\
+			& jalr r7, r7 \\
+			& exit: \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Functions (call and return) pass by reference}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			void foo(int* a, int* b) \{ & xor r1, r1, r1 \\
+				*a = *a + *b; & xor r2, r2, r2 \\
+			\} & addi r1, 3 \\
+			& addi r2, 3 \\
+			int main() \{ & xor r3, r3, r3 \\
+				int a = 3; & addi r3, 50 \\
+				int b = 3; & lsp r3 \\
+				foo(\&a, \&b); & xor r3, r3, r3 \\
+			\} & sw r1, r3 \\
+			& xor r4, r4, r4 \\
+			& addi r4, 1 \\
+			& sw r2, r4 \\
+			& xor r2, r2, r2 \\
+			& addi r2, *calculated address of foo label* \\
+			& push r3 \\
+			& push r4 \\
+			& jalr r7, r2 \\
+			& xor r3, r3, r3 \\
+			& addi r3, *calculated address of exit label* \\
+			& jalr r7, r3 \\
+			& foo: \\
+			& pop r1 \\
+			& pop r2 \\
+			& lw r3, r1 \\
+			& lw r4, r2 \\
+			& add r3, r3, r4 \\
+			& sw r3, r1 \\
+			& jalr r7, r7 \\
+			& exit: \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+\end{par}
+
+\section{Instruction usage and justification.}
+\label{insuj}
+\begin{par}
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{No.} & \textbf{Mnemonic} & \textbf{Usage and justification} \\
+			\hline 
+			1 & hlt & Halts program execution \\
+			\hline 
+			2 & add $ R_{1} $, $ R_{2} $, $ R_{3} $ & add two 16 bit words \\
+			\hline
+			3 & sub $ R_{1} $, $ R_{2} $, $ R_{3} $ & subtract two 16 bit words \\
+			\hline
+			4 & and $ R_{1} $, $ R_{2} $, $ R_{3} $ & perform logical and between registers \\
+			\hline
+			5 & or $ R_{1} $, $ R_{2} $, $ R_{3} $ & perform logical or between registers \\
+			\hline
+			6 & xor $ R_{1} $, $ R_{2} $, $ R_{3} $ & perform logical xor between registers \\
+			\hline
+			7 & nand $ R_{1} $, $ R_{2} $, $ R_{3} $ & perform logical nand between registers \\
+			\hline
+			8 & lw $ R_{1} $, $ R_{2} $ & load 16-bit word form memory \\
+			\hline
+			9 & sw $ R_{1} $, $ R_{2} $ & store 16-bit word in memory \\
+			\hline
+			10 & asr $ R_{1} $, $ R_{2} $ & perform an arithmetic shift right on register (reg / 2) \\
+			\hline
+			11 & asl $ R_{1} $, $ R_{2} $ & perform an arithmetic shift left on register (reg * 2) \\
+			\hline
+			12 & cmp $ R_{1} $, $ R_{2} $ & compare two 16-bit words \\
+			\hline
+			13 & jalr $ R_{1} $, $ R_{2} $ & unconditional jump to a subroutine store return address in register \\
+			\hline
+			14 & push $ R_{1} $ & push 16-bit word onto stack \\
+			\hline
+			15 & pop $ R_{1} $ & pop 16-bit word off stack \\
+			\hline
+			16 & lsp $ R_{1} $ & initialize the stack pointer \\
+			\hline
+			17 & addi $ R_{1} $, $ imm $ & add an immediate to a register  \\
+			\hline
+			18 & subi $ R_{1} $, $ imm $ & subtract an immediate from a register  \\
+			\hline
+			19 & lui $ R_{1} $, $ imm $ & load upper 10 bits of a register and zero bottom six bits \\
+			\hline
+			20 & beq $ imm $ & PC relative branch if two compared registers were equal \\
+			\hline
+			21 & bne $ imm $ & PC relative branch if two compared registers were not equal \\
+			\hline
+			22 & bgt $ imm $ & PC relative branch if a register is greater than another register \\
+			\hline
+			23 & blt $ imm $ & PC relative branch if a register is less than another register \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{par}
+
+\end{document}

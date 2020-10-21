@@ -1,1 +1,1 @@
-![CPUFull](doc/CPU_FULL.png)
+![CPUFull](doc/img/CPU_FULL.png)

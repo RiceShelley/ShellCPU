@@ -65,7 +65,10 @@ ENTITY design_1_programmer_0_0 IS
     dout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     din : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     prog_mem_wr : OUT STD_LOGIC;
-    data_mem_wr : OUT STD_LOGIC
+    data_mem_wr : OUT STD_LOGIC;
+    prog_mode : OUT STD_LOGIC;
+    cpu_clk_en : OUT STD_LOGIC;
+    cpu_rst : OUT STD_LOGIC
   );
 END design_1_programmer_0_0;
 
@@ -76,7 +79,10 @@ ARCHITECTURE design_1_programmer_0_0_arch OF design_1_programmer_0_0 IS
     GENERIC (
       READ_CMD : INTEGER;
       WRITE_PROG_MEM_CMD : INTEGER;
-      WRITE_DATA_MEM_CMD : INTEGER
+      WRITE_DATA_MEM_CMD : INTEGER;
+      TOGGLE_PROG_MODE : INTEGER;
+      TOGGLE_CPU_CLK_EN : INTEGER;
+      TOGGLE_PC_RST : INTEGER
     );
     PORT (
       clk : IN STD_LOGIC;
@@ -89,13 +95,18 @@ ARCHITECTURE design_1_programmer_0_0_arch OF design_1_programmer_0_0 IS
       dout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       din : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       prog_mem_wr : OUT STD_LOGIC;
-      data_mem_wr : OUT STD_LOGIC
+      data_mem_wr : OUT STD_LOGIC;
+      prog_mode : OUT STD_LOGIC;
+      cpu_clk_en : OUT STD_LOGIC;
+      cpu_rst : OUT STD_LOGIC
     );
   END COMPONENT programmer;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_programmer_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF cpu_rst: SIGNAL IS "XIL_INTERFACENAME cpu_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF cpu_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 cpu_rst RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clock_gen/clk_wiz_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
@@ -103,7 +114,10 @@ BEGIN
     GENERIC MAP (
       READ_CMD => 0,
       WRITE_PROG_MEM_CMD => 255,
-      WRITE_DATA_MEM_CMD => 254
+      WRITE_DATA_MEM_CMD => 254,
+      TOGGLE_PROG_MODE => 253,
+      TOGGLE_CPU_CLK_EN => 252,
+      TOGGLE_PC_RST => 251
     )
     PORT MAP (
       clk => clk,
@@ -116,6 +130,9 @@ BEGIN
       dout => dout,
       din => din,
       prog_mem_wr => prog_mem_wr,
-      data_mem_wr => data_mem_wr
+      data_mem_wr => data_mem_wr,
+      prog_mode => prog_mode,
+      cpu_clk_en => cpu_clk_en,
+      cpu_rst => cpu_rst
     );
 END design_1_programmer_0_0_arch;

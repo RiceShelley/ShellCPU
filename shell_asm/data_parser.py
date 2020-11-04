@@ -3,7 +3,6 @@ import fileinput
 
 fn = "tmp/prog.data"
 text_fn = "tmp/prog.text"
-mem_size = 1024
 
 f = open(fn, "r")
 mdt = open("tmp/data_label_addr_table", "w")
@@ -20,8 +19,8 @@ def replace_all_var_refs(name, addr):
     pt.write(data)
     pt.close()
 
-for l in f:
-    l = l.lower().split()
+for raw_line in f:
+    l = raw_line.lower().split()
     mdt.write(l[0] + " \t\t")
     mdt.write("0x" + str(format(addr, '04x')) + "\n")
     if l[1] == "dw":
@@ -29,17 +28,22 @@ for l in f:
             data_mem.write(str(format(int(l[2], 16), '016b')) + "\n")
         elif l[2][0:2] == "0b":
             data_mem.write(str(format(int(l[2], 2), '016b')) + "\n")
+        elif l[2][0] == "\"":
+            s = raw_line.split("\"")[1]
+            replace_all_var_refs(l[0], addr)
+            for c in s:
+                data_mem.write(str(format(ord(c), '016b')) + "\n")
+                addr += 1
+            # Null terminate string
+            data_mem.write(str(format(0, '016b')) + "\n")
+            addr += 1
+            continue
         else:
             data_mem.write(str(format(int(l[2]), '016b')) + "\n")
         replace_all_var_refs(l[0], addr)
         addr += 1
 
-print("memory used " + str(addr) + " words or " + str(format((addr / mem_size) * 100, '.2f')) + "%")
-
-while addr < mem_size:
-    data_mem.write(str(format(0, '016b')) + "\n")
-    addr += 1
-
 f.close()
 mdt.close()
 data_mem.close()
+print("data parse done.")

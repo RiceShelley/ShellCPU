@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Oct 21 00:00:01 2020" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Nov  2 19:24:03 2020" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="design_1" PACKAGE="csg324" SPEEDGRADE="-1"/>
 
@@ -12,21 +12,42 @@
     <PORT DIR="I" NAME="UART_TXD_IN" SIGIS="undef" SIGNAME="External_Ports_UART_TXD_IN">
       <CONNECTIONS>
         <CONNECTION INSTANCE="programmer_uart" PORT="rx"/>
+        <CONNECTION INSTANCE="cpu_uart" PORT="rx"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="UART_RXD_OUT" SIGIS="undef" SIGNAME="programmer_uart_tx">
+    <PORT DIR="O" NAME="UART_RXD_OUT" SIGIS="undef" SIGNAME="cpu_uart_tx">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="programmer_uart" PORT="tx"/>
+        <CONNECTION INSTANCE="cpu_uart" PORT="tx"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="15" NAME="outvalue" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_outvalue">
+    <PORT DIR="O" LEFT="15" NAME="outvalue" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_outvalue">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="CPU_reg_file" PORT="outvalue"/>
+        <CONNECTION INSTANCE="shell_cpu_top" PORT="outvalue"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="2" NAME="inr" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_inr">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="CPU_reg_file" PORT="inr"/>
+        <CONNECTION INSTANCE="shell_cpu_top" PORT="inr"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="seg" RIGHT="0" SIGIS="undef" SIGNAME="seg_display_nexys_7seg_0_seg">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="seg_display_nexys_7seg_0" PORT="seg"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="seg_sel" RIGHT="0" SIGIS="undef" SIGNAME="seg_display_nexys_7seg_0_seg_sel">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="seg_display_nexys_7seg_0" PORT="seg_sel"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LED16_G" SIGIS="undef" SIGNAME="programmer_sync_prog_mode_to_CPU_clk_sig_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="programmer_sync_prog_mode_to_CPU_clk" PORT="sig_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LED17_B" SIGIS="undef" SIGNAME="programmer_sync_pc_rst_to_cpu_clk_sig_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="sig_out"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -34,732 +55,6 @@
   <EXTERNALINTERFACES/>
 
   <MODULES>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/ALU" HWVERSION="1.0" INSTANCE="CPU_ALU" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ALU" VLNV="xilinx.com:module_ref:ALU:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_ALU_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="inputA" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="inputB" RIGHT="0" SIGIS="undef" SIGNAME="CPU_alu_mux_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_alu_mux" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="outputC" RIGHT="0" SIGIS="undef" SIGNAME="CPU_ALU_outputC">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file_input_mux" PORT="in_alu"/>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="cmp_status_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_add" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_add">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_add"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_sub" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_sub">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_sub"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_and" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_and">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_and"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_or" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_or">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_or"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_xor" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_xor">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_xor"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_nand" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_nand">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_nand"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_asr" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_asr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_asr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_asl" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_asl">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_asl"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="op_cmp" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_cmp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="op_cmp"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/ALU_CTRL" HWVERSION="1.0" INSTANCE="CPU_ALU_CTRL" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ALU_CTRL" VLNV="xilinx.com:module_ref:ALU_CTRL:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_ALU_CTRL_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="3" NAME="alu_op" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_alu_op">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="alu_op"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_add" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_add">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_add"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_sub" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_sub">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_sub"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_and" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_and">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_and"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_or" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_or">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_or"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_xor" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_xor">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_xor"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_nand" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_nand">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_nand"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_asr" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_asr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_asr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_asl" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_asl">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_asl"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="op_cmp" SIGIS="undef" SIGNAME="CPU_ALU_CTRL_op_cmp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="op_cmp"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/CTRL_UNIT" HWVERSION="1.0" INSTANCE="CPU_CTRL_UNIT" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="CTRL_UNIT" VLNV="xilinx.com:module_ref:CTRL_UNIT:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_CTRL_UNIT_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="instruction" RIGHT="0" SIGIS="undef" SIGNAME="memory_prog_mem_cur_ins">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_prog_mem" PORT="cur_ins"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_dest_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="write_addrC"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="regA_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_regA_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="read_addrA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="regB_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_regB_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="read_addrB"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="alu_op" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_alu_op">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU_CTRL" PORT="alu_op"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="reg_file_input_sel" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_reg_file_input_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file_input_mux" PORT="sel"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="reg_file_wr" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_reg_file_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="wr_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="pc_ld_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_pc_ld_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="ld_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="pc_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_pc_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="data_mem_wr" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_data_mem_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="wr_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="cmp_status_wr" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_cmp_status_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="wr_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="5" NAME="ri_imm" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_ri_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ri_imm_upper_concat" PORT="imm"/>
-            <CONNECTION INSTANCE="CPU_ri_imm_ext" PORT="imm"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="10" NAME="imm" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_imm_ext" PORT="imm"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="alu_input_sel" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_alu_input_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_alu_mux" PORT="sel"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="pc_load_sel" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_pc_load_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_pc_load_mux" PORT="sel"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="cmp_eq" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_eq_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="eq_sig"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="cmp_ne" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_ne_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="ne_sig"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="cmp_gt" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_gt_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="gt_sig"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="cmp_lt" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_lt_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="lt_sig"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="stack_ld" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_stack_ld">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_stack_ptr_reg" PORT="ld_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="dec_stack" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_dec_stack">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_stack_ptr_reg" PORT="dec"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="inc_stack" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_inc_stack">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_stack_ptr_reg" PORT="inc"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="stack_wr" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_stack_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="stack_wr_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="ri_imm_format_sel" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_ri_imm_format_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_imm_mux" PORT="sel"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/PC" HWVERSION="1.0" INSTANCE="CPU_PC" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="prog_cnt_reg" VLNV="xilinx.com:module_ref:prog_cnt_reg:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_prog_cnt_reg_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_and_gate_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="clock_gen_and_gate" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="async_rst" SIGIS="rst" SIGNAME="programmer_sync_pc_rst_to_cpu_clk_sig_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="sig_out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="ins_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_PC_ins_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_prog_mem" PORT="ins_addr"/>
-            <CONNECTION INSTANCE="CPU_adder_0" PORT="b"/>
-            <CONNECTION INSTANCE="CPU_adder_1" PORT="a"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ld_val" RIGHT="0" SIGIS="undef" SIGNAME="CPU_pc_load_mux_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_pc_load_mux" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="ld_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_pc_ld_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="pc_ld_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_pc_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="pc_en"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/adder_0" HWVERSION="1.0" INSTANCE="CPU_adder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="adder" VLNV="xilinx.com:module_ref:adder:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_adder_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="CPU_imm_ext_s_ext_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_imm_ext" PORT="s_ext_imm"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="CPU_PC_ins_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="ins_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="c" RIGHT="0" SIGIS="undef" SIGNAME="CPU_adder_0_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_pc_load_mux" PORT="b"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/adder_1" HWVERSION="1.0" INSTANCE="CPU_adder_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="adder" VLNV="xilinx.com:module_ref:adder:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_adder_1_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="CPU_PC_ins_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="ins_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="CPU_xlconstant_val_1_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_xlconstant_val_1" PORT="dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="c" RIGHT="0" SIGIS="undef" SIGNAME="CPU_adder_1_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file_input_mux" PORT="next_ins_addr"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/alu_mux" HWVERSION="1.0" INSTANCE="CPU_alu_mux" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux_2_to_1" VLNV="xilinx.com:module_ref:mux_2_to_1:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_mux_2_to_1_1_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regB">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regB"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="CPU_imm_mux_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_imm_mux" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_alu_input_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="alu_input_sel"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="c" RIGHT="0" SIGIS="undef" SIGNAME="CPU_alu_mux_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="inputB"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/cmp_status_reg" HWVERSION="1.0" INSTANCE="CPU_cmp_status_reg" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="cmp_status_reg" VLNV="xilinx.com:module_ref:cmp_status_reg:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_cmp_status_reg_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_and_gate_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="clock_gen_and_gate" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="cmp_status_in" RIGHT="0" SIGIS="undef" SIGNAME="CPU_ALU_outputC">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="outputC"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="wr_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_cmp_status_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="cmp_status_wr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="rst" SIGIS="rst" SIGNAME="programmer_sync_pc_rst_to_cpu_clk_sig_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="sig_out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="eq_sig" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_eq_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="cmp_eq"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="ne_sig" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_ne_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="cmp_ne"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="gt_sig" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_gt_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="cmp_gt"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="lt_sig" SIGIS="undef" SIGNAME="CPU_cmp_status_reg_lt_sig">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="cmp_lt"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/imm_ext" HWVERSION="1.0" INSTANCE="CPU_imm_ext" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="imm_ext" VLNV="xilinx.com:module_ref:imm_ext:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_imm_ext_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="10" NAME="imm" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="imm"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="s_ext_imm" RIGHT="0" SIGIS="undef" SIGNAME="CPU_imm_ext_s_ext_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_adder_0" PORT="a"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/imm_mux" HWVERSION="1.0" INSTANCE="CPU_imm_mux" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux_2_to_1" VLNV="xilinx.com:module_ref:mux_2_to_1:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_mux_2_to_1_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="CPU_ri_imm_upper_concat_upper_concat">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ri_imm_upper_concat" PORT="upper_concat"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="CPU_ri_imm_ext_z_ext_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ri_imm_ext" PORT="z_ext_imm"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_ri_imm_format_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="ri_imm_format_sel"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="c" RIGHT="0" SIGIS="undef" SIGNAME="CPU_imm_mux_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_alu_mux" PORT="b"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/pc_load_mux" HWVERSION="1.0" INSTANCE="CPU_pc_load_mux" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux_2_to_1" VLNV="xilinx.com:module_ref:mux_2_to_1:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_mux_2_to_1_0_1"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="CPU_adder_0_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_adder_0" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_pc_load_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="pc_load_sel"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="c" RIGHT="0" SIGIS="undef" SIGNAME="CPU_pc_load_mux_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="ld_val"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/reg_file" HWVERSION="1.0" INSTANCE="CPU_reg_file" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="reg_file" VLNV="xilinx.com:module_ref:reg_file:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_reg_file_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_and_gate_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="clock_gen_and_gate" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="read_addrA" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_regA_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="regA_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="read_addrB" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_regB_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="regB_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="write_addrC" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_dest_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="dest_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="inr" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_inr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="inr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="regA" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="rd_addr"/>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="data_in"/>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="inputA"/>
-            <CONNECTION INSTANCE="CPU_stack_ptr_reg" PORT="ld_val"/>
-            <CONNECTION INSTANCE="CPU_pc_load_mux" PORT="a"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="regB" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regB">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="wr_addr"/>
-            <CONNECTION INSTANCE="CPU_alu_mux" PORT="a"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="regC" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_input_mux_output_reg">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file_input_mux" PORT="output_reg"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="outvalue" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_outvalue">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="outvalue"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="wr_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_reg_file_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="reg_file_wr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="rst" SIGIS="rst" SIGNAME="programmer_sync_pc_rst_to_cpu_clk_sig_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="sig_out"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/reg_file_input_mux" HWVERSION="1.0" INSTANCE="CPU_reg_file_input_mux" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="reg_file_input_mux" VLNV="xilinx.com:module_ref:reg_file_input_mux:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_reg_file_input_mux_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" LEFT="15" NAME="output_reg" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_input_mux_output_reg">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regC"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="in_alu" RIGHT="0" SIGIS="undef" SIGNAME="CPU_ALU_outputC">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_ALU" PORT="outputC"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_mem" RIGHT="0" SIGIS="undef" SIGNAME="memory_data_mem_data_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="data_out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="next_ins_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_adder_1_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_adder_1" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="from_stack" RIGHT="0" SIGIS="undef" SIGNAME="memory_data_mem_stack_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="stack_out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="sel" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_reg_file_input_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="reg_file_input_sel"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/ri_imm_ext" HWVERSION="1.0" INSTANCE="CPU_ri_imm_ext" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ri_imm_ext" VLNV="xilinx.com:module_ref:ri_imm_ext:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_ri_imm_ext_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="5" NAME="imm" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_ri_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="ri_imm"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="z_ext_imm" RIGHT="0" SIGIS="undef" SIGNAME="CPU_ri_imm_ext_z_ext_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_imm_mux" PORT="b"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/ri_imm_upper_concat" HWVERSION="1.0" INSTANCE="CPU_ri_imm_upper_concat" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ri_imm_upper_concat" VLNV="xilinx.com:module_ref:ri_imm_upper_concat:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_ri_imm_upper_concat_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="5" NAME="imm" RIGHT="0" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_ri_imm">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="ri_imm"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="upper_concat" RIGHT="0" SIGIS="undef" SIGNAME="CPU_ri_imm_upper_concat_upper_concat">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_imm_mux" PORT="a"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/CPU/stack_ptr_reg" HWVERSION="1.0" INSTANCE="CPU_stack_ptr_reg" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="stack_ptr_reg" VLNV="xilinx.com:module_ref:stack_ptr_reg:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_stack_ptr_reg_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_and_gate_c">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="clock_gen_and_gate" PORT="c"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ld_val" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="ld_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_stack_ld">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="stack_ld"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="dec" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_dec_stack">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="dec_stack"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="inc" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_inc_stack">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="inc_stack"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="stack_ptr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_stack_ptr_reg_stack_ptr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="stack_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="rst" SIGIS="rst" SIGNAME="programmer_sync_pc_rst_to_cpu_clk_sig_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="sig_out"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="5" FULLNAME="/CPU/xlconstant_val_1" HWVERSION="1.1" INSTANCE="CPU_xlconstant_val_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="CONST_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="CONST_VAL" VALUE="0x0001"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconstant_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="CPU_xlconstant_val_1_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_adder_1" PORT="b"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/clock_gen/and_gate" HWVERSION="1.0" INSTANCE="clock_gen_and_gate" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="and_gate" VLNV="xilinx.com:module_ref:and_gate:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -779,10 +74,7 @@
         </PORT>
         <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="clock_gen_and_gate_c">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="clk"/>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="clk"/>
-            <CONNECTION INSTANCE="CPU_stack_ptr_reg" PORT="clk"/>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="clk"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1367,20 +659,28 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="clock_gen_and_gate" PORT="b"/>
             <CONNECTION INSTANCE="clock_gen_sync_extern" PORT="clk"/>
-            <CONNECTION INSTANCE="memory_prog_mem" PORT="clk"/>
-            <CONNECTION INSTANCE="memory_data_mem" PORT="clk"/>
             <CONNECTION INSTANCE="programmer_sync_prog_mode_to_CPU_clk" PORT="clk"/>
             <CONNECTION INSTANCE="programmer_sync_data_mem_wr_to_cpu_clk" PORT="clk"/>
             <CONNECTION INSTANCE="programmer_sync_prog_mem_wr_to_cpu_clk" PORT="clk"/>
             <CONNECTION INSTANCE="programmer_sync_addr_to_CPU_clk" PORT="clk"/>
             <CONNECTION INSTANCE="programmer_sync_data_to_cpu_clk" PORT="clk"/>
             <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_prog_mem" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_1" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_2" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_byte_0" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="clk"/>
+            <CONNECTION INSTANCE="seg_display_clk_div_0" PORT="clk_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="CLK100Mhz" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CLK100Mhz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="programmer_uart" PORT="clk"/>
             <CONNECTION INSTANCE="programmer_uart_programmer" PORT="clk"/>
+            <CONNECTION INSTANCE="cpu_uart" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_0" PORT="clk"/>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_byte_1" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1411,6 +711,65 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/cpu_uart" HWVERSION="1.0" INSTANCE="cpu_uart" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="uart" VLNV="xilinx.com:module_ref:uart:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="clk_acc_limit" VALUE="&quot;110110001&quot;"/>
+        <PARAMETER NAME="RX_START" VALUE="0"/>
+        <PARAMETER NAME="RX_RECV" VALUE="1"/>
+        <PARAMETER NAME="RX_STOP" VALUE="2"/>
+        <PARAMETER NAME="RX_IDLE" VALUE="3"/>
+        <PARAMETER NAME="TX_START" VALUE="0"/>
+        <PARAMETER NAME="TX_TRANS" VALUE="1"/>
+        <PARAMETER NAME="TX_STOP" VALUE="2"/>
+        <PARAMETER NAME="TX_IDLE" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_uart_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CLK100Mhz">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CLK100Mhz"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rx" SIGIS="undef" SIGNAME="External_Ports_UART_TXD_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="UART_TXD_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="rx_data" RIGHT="0" SIGIS="undef" SIGNAME="cpu_uart_rx_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_byte_0" PORT="byte"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rx_ready" SIGIS="undef" SIGNAME="cpu_uart_rx_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_1" PORT="sig_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="tx_buff" RIGHT="0" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_byte_1_stable_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_byte_1" PORT="stable_byte"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="tx_start_trans" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_extern_0_sig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_0" PORT="sig_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tx" SIGIS="undef" SIGNAME="cpu_uart_tx">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="UART_RXD_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tx_ready" SIGIS="undef" SIGNAME="cpu_uart_tx_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_2" PORT="sig_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/memory/data_mem" HWVERSION="1.0" INSTANCE="memory_data_mem" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_mem" VLNV="xilinx.com:module_ref:data_mem:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -1423,24 +782,24 @@
             <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CPU_CLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regA">
+        <PORT DIR="I" LEFT="15" NAME="rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_regA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regA"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="regA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="wr_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regB">
+        <PORT DIR="I" LEFT="15" NAME="wr_addr" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_regB">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regB"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="regB"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="CPU_reg_file_regA">
+        <PORT DIR="I" LEFT="15" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_regA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="regA"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="regA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="stack_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_stack_ptr_reg_stack_ptr">
+        <PORT DIR="I" LEFT="15" NAME="stack_addr" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_stack_ptr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_stack_ptr_reg" PORT="stack_ptr"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="stack_ptr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="prog_addr" RIGHT="0" SIGIS="undef" SIGNAME="programmer_sync_addr_to_CPU_clk_stable_word">
@@ -1453,14 +812,14 @@
             <CONNECTION INSTANCE="programmer_sync_data_to_cpu_clk" PORT="stable_word"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="stack_wr_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_stack_wr">
+        <PORT DIR="I" NAME="stack_wr_en" SIGIS="undef" SIGNAME="shell_cpu_top_stack_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="stack_wr"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="stack_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="wr_en" SIGIS="undef" SIGNAME="CPU_CTRL_UNIT_data_mem_wr">
+        <PORT DIR="I" NAME="wr_en" SIGIS="undef" SIGNAME="shell_cpu_top_data_mem_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="data_mem_wr"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="data_mem_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="prog_wr" SIGIS="undef" SIGNAME="programmer_sync_data_mem_wr_to_cpu_clk_sig_out">
@@ -1475,12 +834,188 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="memory_data_mem_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file_input_mux" PORT="data_mem"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="data_mem"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="stack_out" RIGHT="0" SIGIS="undef" SIGNAME="memory_data_mem_stack_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_reg_file_input_mux" PORT="from_stack"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="from_stack"/>
+            <CONNECTION INSTANCE="seg_display_display_ctrl_0" PORT="data"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/memory/mem_maped_uart/sync_byte_0" HWVERSION="1.0" INSTANCE="memory_mem_maped_uart_sync_byte_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="sync_byte" VLNV="xilinx.com:module_ref:sync_byte:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_sync_byte_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="10000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CPU_CLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CPU_CLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="byte" RIGHT="0" SIGIS="undef" SIGNAME="cpu_uart_rx_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="cpu_uart" PORT="rx_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="stable_byte" RIGHT="0" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_byte_0_stable_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="rx_buff"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/memory/mem_maped_uart/sync_byte_1" HWVERSION="1.0" INSTANCE="memory_mem_maped_uart_sync_byte_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="sync_byte" VLNV="xilinx.com:module_ref:sync_byte:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_sync_byte_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CLK100Mhz">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CLK100Mhz"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="byte" RIGHT="0" SIGIS="undef" SIGNAME="memory_mem_maped_uart_uart_controller_tx_buff">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="tx_buff"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="stable_byte" RIGHT="0" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_byte_1_stable_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="cpu_uart" PORT="tx_buff"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/memory/mem_maped_uart/sync_extern_0" HWVERSION="1.0" INSTANCE="memory_mem_maped_uart_sync_extern_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="sync_extern" VLNV="xilinx.com:module_ref:sync_extern:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_sync_extern_0_4"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CLK100Mhz">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CLK100Mhz"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sig_in" SIGIS="undef" SIGNAME="memory_mem_maped_uart_uart_controller_tx_start_trans">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="tx_start_trans"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sig_out" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_extern_0_sig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="cpu_uart" PORT="tx_start_trans"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/memory/mem_maped_uart/sync_extern_1" HWVERSION="1.0" INSTANCE="memory_mem_maped_uart_sync_extern_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="sync_extern" VLNV="xilinx.com:module_ref:sync_extern:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_sync_extern_1_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="10000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CPU_CLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CPU_CLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sig_in" SIGIS="undef" SIGNAME="cpu_uart_rx_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="cpu_uart" PORT="rx_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sig_out" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_extern_1_sig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="rx_ready"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/memory/mem_maped_uart/sync_extern_2" HWVERSION="1.0" INSTANCE="memory_mem_maped_uart_sync_extern_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="sync_extern" VLNV="xilinx.com:module_ref:sync_extern:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_sync_extern_2_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="10000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CPU_CLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CPU_CLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sig_in" SIGIS="undef" SIGNAME="cpu_uart_tx_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="cpu_uart" PORT="tx_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sig_out" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_extern_2_sig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="tx_ready"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/memory/mem_maped_uart/uart_controller" HWVERSION="1.0" INSTANCE="memory_mem_maped_uart_uart_controller" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="uart_controller" VLNV="xilinx.com:module_ref:uart_controller:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_uart_controller_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="10000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_clk_wiz_CPU_CLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CPU_CLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="tx_buff" RIGHT="0" SIGIS="undef" SIGNAME="memory_mem_maped_uart_uart_controller_tx_buff">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_byte_1" PORT="byte"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="rx_buff" RIGHT="0" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_byte_0_stable_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_byte_0" PORT="stable_byte"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rx_ready" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_extern_1_sig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_1" PORT="sig_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="tx_ready" SIGIS="undef" SIGNAME="memory_mem_maped_uart_sync_extern_2_sig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_2" PORT="sig_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tx_start_trans" SIGIS="undef" SIGNAME="memory_mem_maped_uart_uart_controller_tx_start_trans">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_sync_extern_0" PORT="sig_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="tx_buff_data_in" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_regA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="regA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="tx_buff_wr" SIGIS="undef" SIGNAME="shell_cpu_top_data_mem_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="data_mem_wr"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1498,9 +1033,9 @@
             <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CPU_CLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ins_addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_PC_ins_addr">
+        <PORT DIR="I" LEFT="15" NAME="ins_addr" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_ins_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="ins_addr"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="ins_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="prog_data" RIGHT="0" SIGIS="undef" SIGNAME="programmer_sync_data_to_cpu_clk_stable_word">
@@ -1520,7 +1055,7 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="cur_ins" RIGHT="0" SIGIS="undef" SIGNAME="memory_prog_mem_cur_ins">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_CTRL_UNIT" PORT="instruction"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="instruction"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1622,10 +1157,8 @@
         </PORT>
         <PORT DIR="O" NAME="sig_out" SIGIS="undef" SIGNAME="programmer_sync_pc_rst_to_cpu_clk_sig_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CPU_PC" PORT="async_rst"/>
-            <CONNECTION INSTANCE="CPU_reg_file" PORT="rst"/>
-            <CONNECTION INSTANCE="CPU_stack_ptr_reg" PORT="rst"/>
-            <CONNECTION INSTANCE="CPU_cmp_status_reg" PORT="rst"/>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="rst"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="LED17_B"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1676,6 +1209,7 @@
         <PORT DIR="O" NAME="sig_out" SIGIS="undef" SIGNAME="programmer_sync_prog_mode_to_CPU_clk_sig_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="memory_data_mem" PORT="prog_mode"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="LED16_G"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1719,11 +1253,7 @@
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="tx_buff" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" NAME="tx_start_trans" SIGIS="undef"/>
-        <PORT DIR="O" NAME="tx" SIGIS="undef" SIGNAME="programmer_uart_tx">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="UART_RXD_OUT"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="tx" SIGIS="undef"/>
         <PORT DIR="O" NAME="tx_ready" SIGIS="undef" SIGNAME="programmer_uart_tx_ready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="programmer_uart_programmer" PORT="tx_ready"/>
@@ -1738,9 +1268,12 @@
         <PARAMETER NAME="READ_CMD" VALUE="0"/>
         <PARAMETER NAME="WRITE_PROG_MEM_CMD" VALUE="255"/>
         <PARAMETER NAME="WRITE_DATA_MEM_CMD" VALUE="254"/>
-        <PARAMETER NAME="TOGGLE_PROG_MODE" VALUE="253"/>
-        <PARAMETER NAME="TOGGLE_CPU_CLK_EN" VALUE="252"/>
-        <PARAMETER NAME="TOGGLE_PC_RST" VALUE="251"/>
+        <PARAMETER NAME="PROG_MODE_SET_HIGH" VALUE="253"/>
+        <PARAMETER NAME="PROG_MODE_SET_LOW" VALUE="252"/>
+        <PARAMETER NAME="CPU_CLK_EN_SET_HIGH" VALUE="251"/>
+        <PARAMETER NAME="CPU_CLK_EN_SET_LOW" VALUE="250"/>
+        <PARAMETER NAME="PC_RST_SET_HIGH" VALUE="249"/>
+        <PARAMETER NAME="PC_RST_SET_LOW" VALUE="248"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_programmer_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -1801,6 +1334,166 @@
         <PORT DIR="O" NAME="cpu_rst" SIGIS="rst" SIGNAME="programmer_uart_programmer_cpu_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="sig_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/seg_display/clk_div_0" HWVERSION="1.0" INSTANCE="seg_display_clk_div_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="clk_div" VLNV="xilinx.com:module_ref:clk_div:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_clk_div_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="clk_in" SIGIS="undef" SIGNAME="clock_gen_clk_wiz_CPU_CLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_clk_wiz" PORT="CPU_CLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="clk_out" SIGIS="undef" SIGNAME="seg_display_clk_div_0_clk_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="seg_display_display_ctrl_0" PORT="clk"/>
+            <CONNECTION INSTANCE="seg_display_nexys_7seg_0" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/seg_display/display_ctrl_0" HWVERSION="1.0" INSTANCE="seg_display_display_ctrl_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="display_ctrl" VLNV="xilinx.com:module_ref:display_ctrl:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_display_ctrl_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="seg_display_clk_div_0_clk_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="seg_display_clk_div_0" PORT="clk_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="pc_in" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_ins_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="shell_cpu_top" PORT="ins_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data" RIGHT="0" SIGIS="undef" SIGNAME="memory_data_mem_stack_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="stack_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="seg_display_display_ctrl_0_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="seg_display_nexys_7seg_0" PORT="data"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/seg_display/nexys_7seg_0" HWVERSION="1.0" INSTANCE="seg_display_nexys_7seg_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="nexys_7seg" VLNV="xilinx.com:module_ref:nexys_7seg:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_nexys_7seg_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="7" NAME="seg" RIGHT="0" SIGIS="undef" SIGNAME="seg_display_nexys_7seg_0_seg">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="seg"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="seg_sel" RIGHT="0" SIGIS="undef" SIGNAME="seg_display_nexys_7seg_0_seg_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="seg_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="seg_display_clk_div_0_clk_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="seg_display_clk_div_0" PORT="clk_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="data" RIGHT="0" SIGIS="undef" SIGNAME="seg_display_display_ctrl_0_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="seg_display_display_ctrl_0" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/shell_cpu_top" HWVERSION="1.0" INSTANCE="shell_cpu_top" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="shell_cpu_top" VLNV="xilinx.com:module_ref:shell_cpu_top:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_shell_cpu_top_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="rst" SIGIS="rst" SIGNAME="programmer_sync_pc_rst_to_cpu_clk_sig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="programmer_sync_pc_rst_to_cpu_clk" PORT="sig_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clock_gen_and_gate_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clock_gen_and_gate" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_mem" RIGHT="0" SIGIS="undef" SIGNAME="memory_data_mem_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="data_mem_wr" SIGIS="undef" SIGNAME="shell_cpu_top_data_mem_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="tx_buff_wr"/>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="wr_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="from_stack" RIGHT="0" SIGIS="undef" SIGNAME="memory_data_mem_stack_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="stack_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="inr" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_inr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="inr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="ins_addr" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_ins_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_prog_mem" PORT="ins_addr"/>
+            <CONNECTION INSTANCE="seg_display_display_ctrl_0" PORT="pc_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="instruction" RIGHT="0" SIGIS="undef" SIGNAME="memory_prog_mem_cur_ins">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_prog_mem" PORT="cur_ins"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="outvalue" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_outvalue">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="outvalue"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="regA" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_regA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_mem_maped_uart_uart_controller" PORT="tx_buff_data_in"/>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="rd_addr"/>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="regB" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_regB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="wr_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stack_ptr" RIGHT="0" SIGIS="undef" SIGNAME="shell_cpu_top_stack_ptr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="stack_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stack_wr" SIGIS="undef" SIGNAME="shell_cpu_top_stack_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="memory_data_mem" PORT="stack_wr_en"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

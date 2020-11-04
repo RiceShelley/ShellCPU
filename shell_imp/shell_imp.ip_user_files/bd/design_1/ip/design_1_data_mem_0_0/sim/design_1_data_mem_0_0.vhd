@@ -67,8 +67,7 @@ ENTITY design_1_data_mem_0_0 IS
     prog_wr : IN STD_LOGIC;
     prog_mode : IN STD_LOGIC;
     data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    stack_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    gpio_port_a : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+    stack_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END design_1_data_mem_0_0;
 
@@ -89,8 +88,7 @@ ARCHITECTURE design_1_data_mem_0_0_arch OF design_1_data_mem_0_0 IS
       prog_wr : IN STD_LOGIC;
       prog_mode : IN STD_LOGIC;
       data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      stack_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      gpio_port_a : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+      stack_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT data_mem;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -114,7 +112,6 @@ BEGIN
       prog_wr => prog_wr,
       prog_mode => prog_mode,
       data_out => data_out,
-      stack_out => stack_out,
-      gpio_port_a => gpio_port_a
+      stack_out => stack_out
     );
 END design_1_data_mem_0_0_arch;

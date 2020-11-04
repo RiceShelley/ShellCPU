@@ -33,20 +33,24 @@ def write_data_mem(addr, upper, lower):
         write(upper)
         return
 
-t_prog_m = 253
-t_cpu_clk = 252
-t_pc_rst = 251
+prog_mode_high = 253
+prog_mode_low = 252
+cpu_clk_en_high = 251
+cpu_clk_en_low = 251
+pc_rst_high = 249
+pc_rst_low = 248
 
 def program_ld_state():
-        write(t_prog_m)
-        write(t_cpu_clk)
-        write(t_pc_rst)
+        write(prog_mode_high)
+        write(cpu_clk_en_low)
+        write(pc_rst_high)
         return
 
 def program_run():
-        write(t_prog_m)
-        write(t_cpu_clk)
-        write(t_pc_rst)
+        write(prog_mode_low)
+        write(prog_mode_low)
+        write(cpu_clk_en_high)
+        write(pc_rst_low)
         return
 
 # init FPGA COM's
@@ -58,7 +62,8 @@ ser = serial.Serial('/dev/ttyUSB1', 115200, timeout=.5)
 print("FPGA memory interface.")
 print("Device name: " + ser.name)
 program_ld_state()
-max_size = 50
+max_size = 500
+print("MAX PROG SIZE = " + str(max_size))
 addr = 0
 f = open("prog_text.bin", "r")
 for l in f:
@@ -80,6 +85,14 @@ for l in f:
     if addr > max_size:
         break
 print("Finished Loading Program Data.")
+print("DONE.\n")
 program_run()
 f.close()
+print("Shell CPU > ", end='')
+while(1):
+    data = ser.read()
+    if data == b'\x00':
+        print("\n")
+        break
+    print(data.decode(), end='')
 ser.close()

@@ -1,3 +1,4 @@
 GPIO dw 0x0001
-sp dw 0x7FFF
-my_var dw 0xCAFE
+sp dw 0x00FF
+mask dw 0xFF00
+msg dw "Hello, World!"

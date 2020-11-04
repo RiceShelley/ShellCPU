@@ -1,0 +1,450 @@
+
+*** Running vivado
+    with args -log design_1_shell_cpu_top_0_0.vds -m64 -tempDir /home/rootie/.vivado -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_shell_cpu_top_0_0.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source design_1_shell_cpu_top_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/rootie/Documents/projects/myip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.3/data/ip'.
+Command: synth_design -top design_1_shell_cpu_top_0_0 -part xc7a100tcsg324-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 19340 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1399.785 ; gain = 45.781 ; free physical = 3450 ; free virtual = 17312
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_shell_cpu_top_0_0' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/bd/design_1/ip/design_1_shell_cpu_top_0_0/synth/design_1_shell_cpu_top_0_0.vhd:74]
+INFO: [Synth 8-3491] module 'shell_cpu_top' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:23' bound to instance 'U0' of component 'shell_cpu_top' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/bd/design_1/ip/design_1_shell_cpu_top_0_0/synth/design_1_shell_cpu_top_0_0.vhd:109]
+INFO: [Synth 8-638] synthesizing module 'shell_cpu_top' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:41]
+INFO: [Synth 8-3491] module 'ALU' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ALU.vhd:35' bound to instance 'ALU_inst' of component 'ALU' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:255]
+INFO: [Synth 8-638] synthesizing module 'ALU' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ALU.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'ALU' (1#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ALU.vhd:52]
+INFO: [Synth 8-3491] module 'ALU_CTRL' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ALU_CTRL.vhd:34' bound to instance 'ALU_CTRL_inst' of component 'ALU_CTRL' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:271]
+INFO: [Synth 8-638] synthesizing module 'ALU_CTRL' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ALU_CTRL.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'ALU_CTRL' (2#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ALU_CTRL.vhd:49]
+INFO: [Synth 8-3491] module 'CTRL_UNIT' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/CTRL_UNIT.vhd:34' bound to instance 'CTRL_UNIT_inst' of component 'CTRL_UNIT' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:285]
+INFO: [Synth 8-638] synthesizing module 'CTRL_UNIT' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/CTRL_UNIT.vhd:63]
+INFO: [Synth 8-226] default block is never used [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/CTRL_UNIT.vhd:68]
+INFO: [Synth 8-226] default block is never used [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/CTRL_UNIT.vhd:92]
+INFO: [Synth 8-256] done synthesizing module 'CTRL_UNIT' (3#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/CTRL_UNIT.vhd:63]
+INFO: [Synth 8-3491] module 'prog_cnt_reg' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/prog_cnt_reg.vhd:35' bound to instance 'PC' of component 'prog_cnt_reg' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:313]
+INFO: [Synth 8-638] synthesizing module 'prog_cnt_reg' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/prog_cnt_reg.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'prog_cnt_reg' (4#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/prog_cnt_reg.vhd:46]
+INFO: [Synth 8-3491] module 'adder' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/adder.vhd:35' bound to instance 'adder_0_inst' of component 'adder' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:323]
+INFO: [Synth 8-638] synthesizing module 'adder' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/adder.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'adder' (5#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/adder.vhd:43]
+INFO: [Synth 8-3491] module 'adder' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/adder.vhd:35' bound to instance 'adder_1_inst' of component 'adder' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:330]
+INFO: [Synth 8-3491] module 'mux_2_to_1' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/mux_2_to_1.vhd:34' bound to instance 'alu_mux' of component 'mux_2_to_1' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:337]
+INFO: [Synth 8-638] synthesizing module 'mux_2_to_1' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/mux_2_to_1.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'mux_2_to_1' (6#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/mux_2_to_1.vhd:43]
+INFO: [Synth 8-3491] module 'cmp_status_reg' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/cmp_status_reg.vhd:34' bound to instance 'cmp_status_reg_inst' of component 'cmp_status_reg' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:345]
+INFO: [Synth 8-638] synthesizing module 'cmp_status_reg' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/cmp_status_reg.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'cmp_status_reg' (7#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/cmp_status_reg.vhd:47]
+INFO: [Synth 8-3491] module 'imm_ext' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/imm_ext.vhd:34' bound to instance 'imm_ext_inst' of component 'imm_ext' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:357]
+INFO: [Synth 8-638] synthesizing module 'imm_ext' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/imm_ext.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'imm_ext' (8#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/imm_ext.vhd:41]
+INFO: [Synth 8-3491] module 'mux_2_to_1' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/mux_2_to_1.vhd:34' bound to instance 'imm_mux' of component 'mux_2_to_1' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:363]
+INFO: [Synth 8-3491] module 'mux_2_to_1' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/mux_2_to_1.vhd:34' bound to instance 'pc_load_mux' of component 'mux_2_to_1' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:371]
+INFO: [Synth 8-3491] module 'reg_file' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/reg_file.vhd:35' bound to instance 'reg_file_inst' of component 'reg_file' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:379]
+INFO: [Synth 8-638] synthesizing module 'reg_file' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/reg_file.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'reg_file' (9#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/reg_file.vhd:51]
+INFO: [Synth 8-3491] module 'reg_file_input_mux' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/reg_file_input_mux.vhd:34' bound to instance 'reg_file_input_mux_inst' of component 'reg_file_input_mux' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:394]
+INFO: [Synth 8-638] synthesizing module 'reg_file_input_mux' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/reg_file_input_mux.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'reg_file_input_mux' (10#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/reg_file_input_mux.vhd:45]
+INFO: [Synth 8-3491] module 'ri_imm_ext' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ri_imm_ext.vhd:34' bound to instance 'ri_imm_ext_inst' of component 'ri_imm_ext' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:404]
+INFO: [Synth 8-638] synthesizing module 'ri_imm_ext' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ri_imm_ext.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'ri_imm_ext' (11#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ri_imm_ext.vhd:41]
+INFO: [Synth 8-3491] module 'ri_imm_upper_concat' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ri_imm_upper_concat.vhd:34' bound to instance 'ri_imm_upper_concat_inst' of component 'ri_imm_upper_concat' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:410]
+INFO: [Synth 8-638] synthesizing module 'ri_imm_upper_concat' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ri_imm_upper_concat.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'ri_imm_upper_concat' (12#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/ri_imm_upper_concat.vhd:41]
+INFO: [Synth 8-3491] module 'stack_ptr_reg' declared at '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/stack_ptr_reg.vhd:35' bound to instance 'stack_ptr_reg_inst' of component 'stack_ptr_reg' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:416]
+INFO: [Synth 8-638] synthesizing module 'stack_ptr_reg' [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/stack_ptr_reg.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'stack_ptr_reg' (13#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/stack_ptr_reg.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'shell_cpu_top' (14#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/shell_cpu_top.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'design_1_shell_cpu_top_0_0' (15#1) [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/bd/design_1/ip/design_1_shell_cpu_top_0_0/synth/design_1_shell_cpu_top_0_0.vhd:74]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1445.535 ; gain = 91.531 ; free physical = 3458 ; free virtual = 17323
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1445.535 ; gain = 91.531 ; free physical = 3458 ; free virtual = 17323
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1445.535 ; gain = 91.531 ; free physical = 3458 ; free virtual = 17323
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1795.391 ; gain = 0.000 ; free physical = 3206 ; free virtual = 17072
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1795.391 ; gain = 0.000 ; free physical = 3206 ; free virtual = 17072
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.12 . Memory (MB): peak = 1797.391 ; gain = 2.000 ; free physical = 3205 ; free virtual = 17070
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3276 ; free virtual = 17139
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3276 ; free virtual = 17139
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3278 ; free virtual = 17140
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "op_add" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_sub" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_and" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_or" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_xor" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_nand" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_asr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_asl" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "op_cmp" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_file_wr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stack_ld" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "dec_stack" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[0]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[1]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[2]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[3]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[4]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[5]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[6]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_reg[7]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/rootie/Documents/comp-arc/shell_imp/shell_imp.srcs/sources_1/new/stack_ptr_reg.vhd:57]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3269 ; free virtual = 17132
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 4     
+	   3 Input     16 Bit       Adders := 1     
++---XORs : 
+	   2 Input     16 Bit         XORs := 1     
++---Registers : 
+	               16 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 8     
+	   4 Input     16 Bit        Muxes := 1     
+	   8 Input      4 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 2     
+	  12 Input      3 Bit        Muxes := 2     
+	   8 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 29    
+	   4 Input      1 Bit        Muxes := 4     
+	  19 Input      1 Bit        Muxes := 3     
+	   8 Input      1 Bit        Muxes := 5     
+	  11 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module ALU 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   3 Input     16 Bit       Adders := 1     
++---XORs : 
+	   2 Input     16 Bit         XORs := 1     
+Module ALU_CTRL 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 9     
+Module CTRL_UNIT 
+Detailed RTL Component Info : 
++---Muxes : 
+	   8 Input      4 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 2     
+	  12 Input      3 Bit        Muxes := 2     
+	   8 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 3     
+	  19 Input      1 Bit        Muxes := 3     
+	   8 Input      1 Bit        Muxes := 5     
+	  11 Input      1 Bit        Muxes := 2     
+Module prog_cnt_reg 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module adder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+Module mux_2_to_1 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+Module cmp_status_reg 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module reg_file 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 14    
+Module reg_file_input_mux 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input     16 Bit        Muxes := 1     
+Module stack_ptr_reg 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3243 ; free virtual = 17111
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+Reading /home/rootie/.vivado/.Xil_rootie/Vivado-19093-rootie/realtime/design_1_shell_cpu_top_0_0_synth.xdc
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3107 ; free virtual = 16980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3107 ; free virtual = 16980
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/reg_file_inst/mem_reg[0][15] )
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3096 ; free virtual = 16973
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3093 ; free virtual = 16971
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3093 ; free virtual = 16971
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3093 ; free virtual = 16971
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3093 ; free virtual = 16971
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3093 ; free virtual = 16971
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3093 ; free virtual = 16971
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |    32|
+|2     |LUT1   |    40|
+|3     |LUT2   |    64|
+|4     |LUT3   |    21|
+|5     |LUT4   |    68|
+|6     |LUT5   |   133|
+|7     |LUT6   |   123|
+|8     |MUXF7  |    44|
+|9     |FDCE   |    16|
+|10    |FDRE   |   132|
++------+-------+------+
+
+Report Instance Areas: 
++------+------------------------+---------------+------+
+|      |Instance                |Module         |Cells |
++------+------------------------+---------------+------+
+|1     |top                     |               |   673|
+|2     |  U0                    |shell_cpu_top  |   671|
+|3     |    ALU_inst            |ALU            |    26|
+|4     |    PC                  |prog_cnt_reg   |    70|
+|5     |    adder_0_inst        |adder          |     4|
+|6     |    adder_1_inst        |adder_0        |     4|
+|7     |    cmp_status_reg_inst |cmp_status_reg |     9|
+|8     |    reg_file_inst       |reg_file       |   503|
+|9     |    stack_ptr_reg_inst  |stack_ptr_reg  |    55|
++------+------------------------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3093 ; free virtual = 16971
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1797.391 ; gain = 91.531 ; free physical = 3148 ; free virtual = 17026
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1797.391 ; gain = 443.387 ; free physical = 3148 ; free virtual = 17026
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 76 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1800.398 ; gain = 0.000 ; free physical = 3097 ; free virtual = 16970
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+100 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1800.398 ; gain = 446.613 ; free physical = 3152 ; free virtual = 17025
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1800.398 ; gain = 0.000 ; free physical = 3152 ; free virtual = 17025
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.runs/design_1_shell_cpu_top_0_0_synth_1/design_1_shell_cpu_top_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1174] Renamed 8 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1824.410 ; gain = 0.000 ; free physical = 3151 ; free virtual = 17024
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint '/home/rootie/Documents/comp-arc/shell_imp/shell_imp.runs/design_1_shell_cpu_top_0_0_synth_1/design_1_shell_cpu_top_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_shell_cpu_top_0_0_utilization_synth.rpt -pb design_1_shell_cpu_top_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 30 22:03:03 2020...

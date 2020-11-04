@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-| Date         : Wed Oct 21 00:05:42 2020
+| Date         : Mon Nov  2 19:28:00 2020
 | Host         : rootie running 64-bit Ubuntu 18.04.5 LTS
 | Command      : report_drc -file design_1_wrapper_drc_opted.rpt -pb design_1_wrapper_drc_opted.pb -rpx design_1_wrapper_drc_opted.rpx
 | Design       : design_1_wrapper
@@ -49,8 +49,8 @@ Related violations: <none>
 
 PLHOLDVIO-2#1 Warning
 Non-Optimal connections which could lead to hold violations  
-A LUT design_1_i/clock_gen/and_gate/c_INST_0 is driving clock pin of 161 cells. This could lead to large hold time violations. Involved cells are:
-design_1_i/CPU/PC/U0/pc_reg[0], design_1_i/CPU/PC/U0/pc_reg[10], design_1_i/CPU/PC/U0/pc_reg[11], design_1_i/CPU/PC/U0/pc_reg[12], design_1_i/CPU/PC/U0/pc_reg[13], design_1_i/CPU/PC/U0/pc_reg[14], design_1_i/CPU/PC/U0/pc_reg[15], design_1_i/CPU/PC/U0/pc_reg[1], design_1_i/CPU/PC/U0/pc_reg[2], design_1_i/CPU/PC/U0/pc_reg[3], design_1_i/CPU/PC/U0/pc_reg[4], design_1_i/CPU/PC/U0/pc_reg[5], design_1_i/CPU/PC/U0/pc_reg[6], design_1_i/CPU/PC/U0/pc_reg[7], design_1_i/CPU/PC/U0/pc_reg[8] (the first 15 of 161 listed)
+A LUT design_1_i/clock_gen/and_gate/c_INST_0 is driving clock pin of 145 cells. This could lead to large hold time violations. Involved cells are:
+design_1_i/shell_cpu_top/U0/PC/pc_reg[0], design_1_i/shell_cpu_top/U0/PC/pc_reg[10], design_1_i/shell_cpu_top/U0/PC/pc_reg[11], design_1_i/shell_cpu_top/U0/PC/pc_reg[12], design_1_i/shell_cpu_top/U0/PC/pc_reg[13], design_1_i/shell_cpu_top/U0/PC/pc_reg[14], design_1_i/shell_cpu_top/U0/PC/pc_reg[15], design_1_i/shell_cpu_top/U0/PC/pc_reg[1], design_1_i/shell_cpu_top/U0/PC/pc_reg[2], design_1_i/shell_cpu_top/U0/PC/pc_reg[3], design_1_i/shell_cpu_top/U0/PC/pc_reg[4], design_1_i/shell_cpu_top/U0/PC/pc_reg[5], design_1_i/shell_cpu_top/U0/PC/pc_reg[6], design_1_i/shell_cpu_top/U0/PC/pc_reg[7], design_1_i/shell_cpu_top/U0/PC/pc_reg[8] (the first 15 of 145 listed)
 Related violations: <none>
 
 

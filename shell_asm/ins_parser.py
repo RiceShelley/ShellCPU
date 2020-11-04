@@ -109,30 +109,6 @@ def parse_s(ins):
         return "ERROR"
     return rtn
 
-def check_pseudo(ins):
-    if (ins[0] == "zero"):
-        ins = [['xor', ins[1], ins[1], ins[1]]]
-    elif (ins[0] == "movi"):
-        imm = int(ins[2])
-        if imm > 2**16 - 1:
-            print("WARN: movi max size 2^16")
-        upper_six = 0
-        lower_ten = int(str(format(imm, '016b')[6:]), 2)
-        if imm >= 1024:
-            upper_six = int(str(format(imm, '016b')[0:6]), 2)
-        ins = [['lui', ins[1], upper_six]];
-        remander = lower_ten
-        while(True):
-            if remander > 63:
-                ins.append(['addi', ins[0][1], 63])
-                remander -= 63
-            else:
-                ins.append(['addi', ins[0][1], remander])
-                break
-    else:
-        ins = [ins]
-    return ins
-        
 ins_parse = {
         "add" : parse_rrr,
         "sub" : parse_rrr,
@@ -159,45 +135,80 @@ ins_parse = {
         "hlt" : parse_s
         }
 
-fn = "tmp/prog.text"
+fn = "tmp/prog_text_raw.asm"
 f = open(fn, "r")
-fbin_name = fn.split('.')[0] + "_text.bin"
+fbin_name = "tmp/prog_text.bin"
 fbin = open(fbin_name, "w")
 addr = 0
 mem_len = 1024
+
+# find next data mem address available
+dmem = open("tmp/data_mem.bin", "r")
+cur_data_mem_addr = 0
+for l in dmem:
+    cur_data_mem_addr += 1
+dmem = open("tmp/data_mem.bin", "a")
+
+# generate label table
+label_table = []
 for l in f:
-    raw_ins = l.lower()
-    raw_ins = raw_ins.replace(',', ' ')
-    raw_ins = raw_ins.split()
-    # ; <- ignore comment symbol
-    if raw_ins[0] == ';':
+    ins = l.split()
+    if ins[0] not in ins_parse:
+        if ins[0][-1] == ":":
+            label_table.append([ins[0][:-1], addr])
+            continue
+    addr += 1
+
+print(label_table)
+
+f.seek(0)
+addr = 0
+for l in f:
+    # ignore labels
+    if l.split()[0][-1] == ":":
         continue
-    for i in range(1, len(raw_ins)):
-        raw_ins[i] = raw_ins[i].replace('r', ' ')
+    for label in label_table:
+        if label[0] in l.split():
+            if l.split()[0][0] == "b":
+                l = l.replace(label[0], str(label[1] - addr))
+            else:
+                # append address to data memory
+                if len(label) == 2:
+                    label.append(cur_data_mem_addr)
+                    dmem.write(str(format(int(label[1]), '016b')) + "\n")
+                l = l.replace(label[0], str(label[2]))
+                cur_data_mem_addr += 1
+            print(l)
 
-    list_ins = check_pseudo(raw_ins)
+    ins = l.split()
+    if ins[0] not in ins_parse:
+        print("Syntax error '" + ins[0] + "'")
+        print("Exiting.")
+        exit()
 
-    for ins in list_ins:
-        if ins[0] not in ins_parse:
-            print("Syntax error '" + ins[0] + "'");
-            print("Exiting.")
-            exit()
-        m_ins = ins_parse[ins[0]](ins)
-        if (m_ins == "ERROR"):
-            print("ins parse error.")
-            f.close()
-            fbin.close()
-            exit()
-        fbin.write(m_ins + "\n")
-        addr += 1
+    m_ins = ins_parse[ins[0]](ins)
+    if (m_ins == "ERROR"):
+        print("ins parse error.")
+        f.close()
+        fbin.close()
+        dmem.close()
+        exit()
+    fbin.write(m_ins + "\n")
+    addr += 1
 
 print("prog len " + str(addr))
 
 while addr < mem_len:
-    fbin.write(str(format(0, '016b')) + "\n");
+    fbin.write(str(format(0, '016b')) + "\n")
     addr += 1
+
+while cur_data_mem_addr < mem_len:
+    dmem.write(str(format(0, '016b')) + "\n")
+    cur_data_mem_addr += 1
+
 
 print("Generated Machine Code.")
 
+dmem.close()
 f.close()
 fbin.close()

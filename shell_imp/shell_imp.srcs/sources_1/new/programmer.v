@@ -23,9 +23,13 @@ module programmer # (
         parameter READ_CMD = 0,
         WRITE_PROG_MEM_CMD = 255,
         WRITE_DATA_MEM_CMD = 254,
-        TOGGLE_PROG_MODE = 253,
-        TOGGLE_CPU_CLK_EN = 252,
-        TOGGLE_PC_RST = 251
+        
+        PROG_MODE_SET_HIGH = 253,
+        PROG_MODE_SET_LOW = 252,
+        CPU_CLK_EN_SET_HIGH = 251,
+        CPU_CLK_EN_SET_LOW = 250,
+        PC_RST_SET_HIGH = 249,
+        PC_RST_SET_LOW = 248
     )(
         input clk,
         input rx_ready,
@@ -70,12 +74,18 @@ module programmer # (
             WAIT_FOR_CMD:
             begin
                 if (posedge_rx_ready) begin
-                    if (rx_data == TOGGLE_PROG_MODE) begin
-                        prog_mode <= ~prog_mode;
-                    end else if (rx_data == TOGGLE_CPU_CLK_EN) begin
-                        cpu_clk_en <= ~cpu_clk_en;
-                    end else if (rx_data == TOGGLE_PC_RST) begin
-                        cpu_rst <= ~cpu_rst;
+                    if (rx_data == PROG_MODE_SET_HIGH) begin
+                        prog_mode <= 1;
+                    end else if (rx_data == PROG_MODE_SET_LOW) begin
+                        prog_mode <= 0;
+                    end else if (rx_data == CPU_CLK_EN_SET_HIGH) begin
+                        cpu_clk_en <= 1;
+                    end else if (rx_data == CPU_CLK_EN_SET_LOW) begin
+                        cpu_clk_en <= 0;
+                    end else if (rx_data == PC_RST_SET_HIGH) begin
+                        cpu_rst <= 1;
+                    end else if (rx_data == PC_RST_SET_LOW) begin
+                        cpu_rst <= 0;
                     end else begin
                         cmd <= rx_data;
                         state <= GET_ADDR0;

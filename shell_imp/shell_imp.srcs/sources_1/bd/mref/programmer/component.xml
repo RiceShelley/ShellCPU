@@ -49,7 +49,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1a75add6</spirit:value>
+            <spirit:value>a14ed198</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -62,7 +62,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1a75add6</spirit:value>
+            <spirit:value>a14ed198</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -323,19 +323,34 @@
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.WRITE_DATA_MEM_CMD">254</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
-        <spirit:name>TOGGLE_PROG_MODE</spirit:name>
-        <spirit:displayName>Toggle Prog Mode</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.TOGGLE_PROG_MODE">253</spirit:value>
+        <spirit:name>PROG_MODE_SET_HIGH</spirit:name>
+        <spirit:displayName>Prog Mode Set High</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.PROG_MODE_SET_HIGH">253</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
-        <spirit:name>TOGGLE_CPU_CLK_EN</spirit:name>
-        <spirit:displayName>Toggle Cpu Clk En</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.TOGGLE_CPU_CLK_EN">252</spirit:value>
+        <spirit:name>PROG_MODE_SET_LOW</spirit:name>
+        <spirit:displayName>Prog Mode Set Low</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.PROG_MODE_SET_LOW">252</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
-        <spirit:name>TOGGLE_PC_RST</spirit:name>
-        <spirit:displayName>Toggle Pc Rst</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.TOGGLE_PC_RST">251</spirit:value>
+        <spirit:name>CPU_CLK_EN_SET_HIGH</spirit:name>
+        <spirit:displayName>Cpu Clk En Set High</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.CPU_CLK_EN_SET_HIGH">251</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>CPU_CLK_EN_SET_LOW</spirit:name>
+        <spirit:displayName>Cpu Clk En Set Low</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.CPU_CLK_EN_SET_LOW">250</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>PC_RST_SET_HIGH</spirit:name>
+        <spirit:displayName>Pc Rst Set High</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.PC_RST_SET_HIGH">249</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>PC_RST_SET_LOW</spirit:name>
+        <spirit:displayName>Pc Rst Set Low</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.PC_RST_SET_LOW">248</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -345,7 +360,7 @@
       <spirit:file>
         <spirit:name>xgui/programmer_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_9b486a1b</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_6d3199c7</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -368,19 +383,34 @@
       <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.WRITE_DATA_MEM_CMD">254</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
-      <spirit:name>TOGGLE_PROG_MODE</spirit:name>
-      <spirit:displayName>Toggle Prog Mode</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.TOGGLE_PROG_MODE">253</spirit:value>
+      <spirit:name>PROG_MODE_SET_HIGH</spirit:name>
+      <spirit:displayName>Prog Mode Set High</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.PROG_MODE_SET_HIGH">253</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
-      <spirit:name>TOGGLE_CPU_CLK_EN</spirit:name>
-      <spirit:displayName>Toggle Cpu Clk En</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.TOGGLE_CPU_CLK_EN">252</spirit:value>
+      <spirit:name>PROG_MODE_SET_LOW</spirit:name>
+      <spirit:displayName>Prog Mode Set Low</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.PROG_MODE_SET_LOW">252</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
-      <spirit:name>TOGGLE_PC_RST</spirit:name>
-      <spirit:displayName>Toggle Pc Rst</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.TOGGLE_PC_RST">251</spirit:value>
+      <spirit:name>CPU_CLK_EN_SET_HIGH</spirit:name>
+      <spirit:displayName>Cpu Clk En Set High</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.CPU_CLK_EN_SET_HIGH">251</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>CPU_CLK_EN_SET_LOW</spirit:name>
+      <spirit:displayName>Cpu Clk En Set Low</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.CPU_CLK_EN_SET_LOW">250</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>PC_RST_SET_HIGH</spirit:name>
+      <spirit:displayName>Pc Rst Set High</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.PC_RST_SET_HIGH">249</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>PC_RST_SET_LOW</spirit:name>
+      <spirit:displayName>Pc Rst Set Low</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.PC_RST_SET_LOW">248</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -402,7 +432,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-10-21T00:47:25Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2020-11-03T02:33:27Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>

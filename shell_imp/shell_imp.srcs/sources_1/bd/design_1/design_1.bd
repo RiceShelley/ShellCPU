@@ -1,36 +1,13 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x4633062020088D82",
+      "boundary_crc": "0x19845CBA0815C5D1",
       "device": "xc7a100tcsg324-1",
       "name": "design_1",
       "synth_flow_mode": "Hierarchical",
       "tool_version": "2018.3"
     },
     "design_tree": {
-      "memory": {
-        "prog_mem": "",
-        "data_mem": ""
-      },
-      "CPU": {
-        "xlconstant_val_1": "",
-        "adder_0": "",
-        "adder_1": "",
-        "ri_imm_upper_concat": "",
-        "ri_imm_ext": "",
-        "imm_ext": "",
-        "reg_file_input_mux": "",
-        "ALU": "",
-        "ALU_CTRL": "",
-        "CTRL_UNIT": "",
-        "PC": "",
-        "reg_file": "",
-        "stack_ptr_reg": "",
-        "cmp_status_reg": "",
-        "imm_mux": "",
-        "alu_mux": "",
-        "pc_load_mux": ""
-      },
       "programmer": {
         "uart": "",
         "sync_prog_mode_to_CPU_clk": "",
@@ -45,6 +22,25 @@
         "and_gate": "",
         "sync_extern": "",
         "clk_wiz": ""
+      },
+      "cpu_uart": "",
+      "memory": {
+        "prog_mem": "",
+        "mem_maped_uart": {
+          "sync_extern_0": "",
+          "sync_extern_1": "",
+          "sync_extern_2": "",
+          "sync_byte_0": "",
+          "sync_byte_1": "",
+          "uart_controller": ""
+        },
+        "data_mem": ""
+      },
+      "shell_cpu_top": "",
+      "seg_display": {
+        "display_ctrl_0": "",
+        "nexys_7seg_0": "",
+        "clk_div_0": ""
       }
     },
     "ports": {
@@ -66,1337 +62,33 @@
         "direction": "I",
         "left": "2",
         "right": "0"
+      },
+      "seg": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "seg_sel": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "LED16_G": {
+        "direction": "O"
+      },
+      "LED17_B": {
+        "direction": "O"
       }
     },
     "components": {
-      "memory": {
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "ins_addr": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "cur_ins": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "stack_addr": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "stack_out": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "data_in": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "wr_addr": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "data_out": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "wr_en": {
-            "direction": "I"
-          },
-          "stack_wr_en": {
-            "direction": "I"
-          },
-          "prog_addr": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "prog_data": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "prog_addr1": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "prog_mode": {
-            "direction": "I"
-          },
-          "prog_data1": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "prog_wr1": {
-            "direction": "I"
-          },
-          "prog_wr": {
-            "direction": "I"
-          }
-        },
-        "components": {
-          "prog_mem": {
-            "vlnv": "xilinx.com:module_ref:prog_mem:1.0",
-            "xci_name": "design_1_prog_mem_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "prog_mem",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I"
-              },
-              "ins_addr": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "prog_data": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "prog_addr": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "prog_wr": {
-                "direction": "I"
-              },
-              "cur_ins": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "data_mem": {
-            "vlnv": "xilinx.com:module_ref:data_mem:1.0",
-            "xci_name": "design_1_data_mem_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "data_mem",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I"
-              },
-              "rd_addr": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "wr_addr": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "data_in": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "stack_addr": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "prog_addr": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "prog_data": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "stack_wr_en": {
-                "direction": "I"
-              },
-              "wr_en": {
-                "direction": "I"
-              },
-              "prog_wr": {
-                "direction": "I"
-              },
-              "prog_mode": {
-                "direction": "I"
-              },
-              "data_out": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "stack_out": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          }
-        },
-        "nets": {
-          "clk_1": {
-            "ports": [
-              "clk",
-              "prog_mem/clk",
-              "data_mem/clk"
-            ]
-          },
-          "ins_addr_1": {
-            "ports": [
-              "ins_addr",
-              "prog_mem/ins_addr"
-            ]
-          },
-          "prog_mem_cur_ins": {
-            "ports": [
-              "prog_mem/cur_ins",
-              "cur_ins"
-            ]
-          },
-          "stack_addr_1": {
-            "ports": [
-              "stack_addr",
-              "data_mem/stack_addr"
-            ]
-          },
-          "data_mem_stack_out": {
-            "ports": [
-              "data_mem/stack_out",
-              "stack_out"
-            ]
-          },
-          "data_in_1": {
-            "ports": [
-              "data_in",
-              "data_mem/rd_addr",
-              "data_mem/data_in"
-            ]
-          },
-          "wr_addr_1": {
-            "ports": [
-              "wr_addr",
-              "data_mem/wr_addr"
-            ]
-          },
-          "data_mem_data_out": {
-            "ports": [
-              "data_mem/data_out",
-              "data_out"
-            ]
-          },
-          "wr_en_1": {
-            "ports": [
-              "wr_en",
-              "data_mem/wr_en"
-            ]
-          },
-          "stack_wr_en_1": {
-            "ports": [
-              "stack_wr_en",
-              "data_mem/stack_wr_en"
-            ]
-          },
-          "prog_addr1_1": {
-            "ports": [
-              "prog_addr1",
-              "prog_mem/prog_addr",
-              "data_mem/prog_addr"
-            ]
-          },
-          "prog_mode_1": {
-            "ports": [
-              "prog_mode",
-              "data_mem/prog_mode"
-            ]
-          },
-          "prog_data1_1": {
-            "ports": [
-              "prog_data1",
-              "prog_mem/prog_data",
-              "data_mem/prog_data"
-            ]
-          },
-          "prog_wr1_1": {
-            "ports": [
-              "prog_wr1",
-              "data_mem/prog_wr"
-            ]
-          },
-          "prog_wr_1": {
-            "ports": [
-              "prog_wr",
-              "prog_mem/prog_wr"
-            ]
-          }
-        }
-      },
-      "CPU": {
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "stack_ptr": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "ins_addr": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "instruction": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "stack_wr": {
-            "direction": "O"
-          },
-          "data_mem_wr": {
-            "direction": "O"
-          },
-          "data_mem": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "from_stack": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "regB": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "regA": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "async_rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "outvalue": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "inr": {
-            "direction": "I",
-            "left": "2",
-            "right": "0"
-          }
-        },
-        "components": {
-          "xlconstant_val_1": {
-            "vlnv": "xilinx.com:ip:xlconstant:1.1",
-            "xci_name": "design_1_xlconstant_0_0",
-            "parameters": {
-              "CONST_WIDTH": {
-                "value": "16"
-              }
-            }
-          },
-          "adder_0": {
-            "vlnv": "xilinx.com:module_ref:adder:1.0",
-            "xci_name": "design_1_adder_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "adder",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "a": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "b": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "c": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "adder_1": {
-            "vlnv": "xilinx.com:module_ref:adder:1.0",
-            "xci_name": "design_1_adder_1_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "adder",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "a": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "b": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "c": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "ri_imm_upper_concat": {
-            "vlnv": "xilinx.com:module_ref:ri_imm_upper_concat:1.0",
-            "xci_name": "design_1_ri_imm_upper_concat_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "ri_imm_upper_concat",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "imm": {
-                "direction": "I",
-                "left": "5",
-                "right": "0"
-              },
-              "upper_concat": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "ri_imm_ext": {
-            "vlnv": "xilinx.com:module_ref:ri_imm_ext:1.0",
-            "xci_name": "design_1_ri_imm_ext_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "ri_imm_ext",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "imm": {
-                "direction": "I",
-                "left": "5",
-                "right": "0"
-              },
-              "z_ext_imm": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "imm_ext": {
-            "vlnv": "xilinx.com:module_ref:imm_ext:1.0",
-            "xci_name": "design_1_imm_ext_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "imm_ext",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "imm": {
-                "direction": "I",
-                "left": "10",
-                "right": "0"
-              },
-              "s_ext_imm": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "reg_file_input_mux": {
-            "vlnv": "xilinx.com:module_ref:reg_file_input_mux:1.0",
-            "xci_name": "design_1_reg_file_input_mux_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "reg_file_input_mux",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "output_reg": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "in_alu": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "data_mem": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "next_ins_addr": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "from_stack": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "sel": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              }
-            }
-          },
-          "ALU": {
-            "vlnv": "xilinx.com:module_ref:ALU:1.0",
-            "xci_name": "design_1_ALU_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "ALU",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "inputA": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "inputB": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "outputC": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "op_add": {
-                "direction": "I"
-              },
-              "op_sub": {
-                "direction": "I"
-              },
-              "op_and": {
-                "direction": "I"
-              },
-              "op_or": {
-                "direction": "I"
-              },
-              "op_xor": {
-                "direction": "I"
-              },
-              "op_nand": {
-                "direction": "I"
-              },
-              "op_asr": {
-                "direction": "I"
-              },
-              "op_asl": {
-                "direction": "I"
-              },
-              "op_cmp": {
-                "direction": "I"
-              }
-            }
-          },
-          "ALU_CTRL": {
-            "vlnv": "xilinx.com:module_ref:ALU_CTRL:1.0",
-            "xci_name": "design_1_ALU_CTRL_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "ALU_CTRL",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "alu_op": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "op_add": {
-                "direction": "O"
-              },
-              "op_sub": {
-                "direction": "O"
-              },
-              "op_and": {
-                "direction": "O"
-              },
-              "op_or": {
-                "direction": "O"
-              },
-              "op_xor": {
-                "direction": "O"
-              },
-              "op_nand": {
-                "direction": "O"
-              },
-              "op_asr": {
-                "direction": "O"
-              },
-              "op_asl": {
-                "direction": "O"
-              },
-              "op_cmp": {
-                "direction": "O"
-              }
-            }
-          },
-          "CTRL_UNIT": {
-            "vlnv": "xilinx.com:module_ref:CTRL_UNIT:1.0",
-            "xci_name": "design_1_CTRL_UNIT_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "CTRL_UNIT",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "instruction": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "dest_addr": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "regA_addr": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "regB_addr": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "alu_op": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "reg_file_input_sel": {
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              },
-              "reg_file_wr": {
-                "direction": "O"
-              },
-              "pc_ld_en": {
-                "direction": "O"
-              },
-              "pc_en": {
-                "direction": "O"
-              },
-              "data_mem_wr": {
-                "direction": "O"
-              },
-              "cmp_status_wr": {
-                "direction": "O"
-              },
-              "ri_imm": {
-                "direction": "O",
-                "left": "5",
-                "right": "0"
-              },
-              "imm": {
-                "direction": "O",
-                "left": "10",
-                "right": "0"
-              },
-              "alu_input_sel": {
-                "direction": "O"
-              },
-              "pc_load_sel": {
-                "direction": "O"
-              },
-              "cmp_eq": {
-                "direction": "I"
-              },
-              "cmp_ne": {
-                "direction": "I"
-              },
-              "cmp_gt": {
-                "direction": "I"
-              },
-              "cmp_lt": {
-                "direction": "I"
-              },
-              "stack_ld": {
-                "direction": "O"
-              },
-              "dec_stack": {
-                "direction": "O"
-              },
-              "inc_stack": {
-                "direction": "O"
-              },
-              "stack_wr": {
-                "direction": "O"
-              },
-              "ri_imm_format_sel": {
-                "direction": "O"
-              }
-            }
-          },
-          "PC": {
-            "vlnv": "xilinx.com:module_ref:prog_cnt_reg:1.0",
-            "xci_name": "design_1_prog_cnt_reg_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "prog_cnt_reg",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I"
-              },
-              "async_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "ins_addr": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "ld_val": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "ld_en": {
-                "direction": "I"
-              },
-              "en": {
-                "direction": "I"
-              }
-            }
-          },
-          "reg_file": {
-            "vlnv": "xilinx.com:module_ref:reg_file:1.0",
-            "xci_name": "design_1_reg_file_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "reg_file",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I"
-              },
-              "rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "read_addrA": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "read_addrB": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "write_addrC": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "inr": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "regA": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "regB": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "regC": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "outvalue": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "wr_en": {
-                "direction": "I"
-              }
-            }
-          },
-          "stack_ptr_reg": {
-            "vlnv": "xilinx.com:module_ref:stack_ptr_reg:1.0",
-            "xci_name": "design_1_stack_ptr_reg_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "stack_ptr_reg",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I"
-              },
-              "rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "ld_val": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "ld_en": {
-                "direction": "I"
-              },
-              "dec": {
-                "direction": "I"
-              },
-              "inc": {
-                "direction": "I"
-              },
-              "stack_ptr": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "cmp_status_reg": {
-            "vlnv": "xilinx.com:module_ref:cmp_status_reg:1.0",
-            "xci_name": "design_1_cmp_status_reg_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "cmp_status_reg",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I"
-              },
-              "rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "cmp_status_in": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "wr_en": {
-                "direction": "I"
-              },
-              "eq_sig": {
-                "direction": "O"
-              },
-              "ne_sig": {
-                "direction": "O"
-              },
-              "gt_sig": {
-                "direction": "O"
-              },
-              "lt_sig": {
-                "direction": "O"
-              }
-            }
-          },
-          "imm_mux": {
-            "vlnv": "xilinx.com:module_ref:mux_2_to_1:1.0",
-            "xci_name": "design_1_mux_2_to_1_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "mux_2_to_1",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "a": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "b": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "sel": {
-                "direction": "I"
-              },
-              "c": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "alu_mux": {
-            "vlnv": "xilinx.com:module_ref:mux_2_to_1:1.0",
-            "xci_name": "design_1_mux_2_to_1_1_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "mux_2_to_1",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "a": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "b": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "sel": {
-                "direction": "I"
-              },
-              "c": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          },
-          "pc_load_mux": {
-            "vlnv": "xilinx.com:module_ref:mux_2_to_1:1.0",
-            "xci_name": "design_1_mux_2_to_1_0_1",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "mux_2_to_1",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "a": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "b": {
-                "direction": "I",
-                "left": "15",
-                "right": "0"
-              },
-              "sel": {
-                "direction": "I"
-              },
-              "c": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              }
-            }
-          }
-        },
-        "nets": {
-          "imm_ext_s_ext_imm": {
-            "ports": [
-              "imm_ext/s_ext_imm",
-              "adder_0/a"
-            ]
-          },
-          "gpr_in_1": {
-            "ports": [
-              "reg_file/regA",
-              "regA",
-              "ALU/inputA",
-              "stack_ptr_reg/ld_val",
-              "pc_load_mux/a"
-            ]
-          },
-          "adder_0_c": {
-            "ports": [
-              "adder_0/c",
-              "pc_load_mux/b"
-            ]
-          },
-          "clk_1": {
-            "ports": [
-              "clk",
-              "PC/clk",
-              "reg_file/clk",
-              "stack_ptr_reg/clk",
-              "cmp_status_reg/clk"
-            ]
-          },
-          "stack_ptr_reg_stack_ptr": {
-            "ports": [
-              "stack_ptr_reg/stack_ptr",
-              "stack_ptr"
-            ]
-          },
-          "PC_ins_addr": {
-            "ports": [
-              "PC/ins_addr",
-              "ins_addr",
-              "adder_0/b",
-              "adder_1/a"
-            ]
-          },
-          "cmp_status_in_1": {
-            "ports": [
-              "ALU/outputC",
-              "reg_file_input_mux/in_alu",
-              "cmp_status_reg/cmp_status_in"
-            ]
-          },
-          "xlconstant_0_dout": {
-            "ports": [
-              "xlconstant_val_1/dout",
-              "adder_1/b"
-            ]
-          },
-          "CTRL_UNIT_inc_stack": {
-            "ports": [
-              "CTRL_UNIT/inc_stack",
-              "stack_ptr_reg/inc"
-            ]
-          },
-          "CTRL_UNIT_dec_stack": {
-            "ports": [
-              "CTRL_UNIT/dec_stack",
-              "stack_ptr_reg/dec"
-            ]
-          },
-          "CTRL_UNIT_stack_ld": {
-            "ports": [
-              "CTRL_UNIT/stack_ld",
-              "stack_ptr_reg/ld_en"
-            ]
-          },
-          "instruction_1": {
-            "ports": [
-              "instruction",
-              "CTRL_UNIT/instruction"
-            ]
-          },
-          "CTRL_UNIT_imm": {
-            "ports": [
-              "CTRL_UNIT/imm",
-              "imm_ext/imm"
-            ]
-          },
-          "CTRL_UNIT_cmp_status_wr": {
-            "ports": [
-              "CTRL_UNIT/cmp_status_wr",
-              "cmp_status_reg/wr_en"
-            ]
-          },
-          "cmp_status_reg_eq_sig": {
-            "ports": [
-              "cmp_status_reg/eq_sig",
-              "CTRL_UNIT/cmp_eq"
-            ]
-          },
-          "cmp_status_reg_ne_sig": {
-            "ports": [
-              "cmp_status_reg/ne_sig",
-              "CTRL_UNIT/cmp_ne"
-            ]
-          },
-          "cmp_status_reg_gt_sig": {
-            "ports": [
-              "cmp_status_reg/gt_sig",
-              "CTRL_UNIT/cmp_gt"
-            ]
-          },
-          "cmp_status_reg_lt_sig": {
-            "ports": [
-              "cmp_status_reg/lt_sig",
-              "CTRL_UNIT/cmp_lt"
-            ]
-          },
-          "CTRL_UNIT_pc_load_sel": {
-            "ports": [
-              "CTRL_UNIT/pc_load_sel",
-              "pc_load_mux/sel"
-            ]
-          },
-          "CTRL_UNIT_pc_ld_en": {
-            "ports": [
-              "CTRL_UNIT/pc_ld_en",
-              "PC/ld_en"
-            ]
-          },
-          "CTRL_UNIT_pc_en": {
-            "ports": [
-              "CTRL_UNIT/pc_en",
-              "PC/en"
-            ]
-          },
-          "CTRL_UNIT_stack_wr": {
-            "ports": [
-              "CTRL_UNIT/stack_wr",
-              "stack_wr"
-            ]
-          },
-          "CTRL_UNIT_data_mem_wr": {
-            "ports": [
-              "CTRL_UNIT/data_mem_wr",
-              "data_mem_wr"
-            ]
-          },
-          "adder_1_c": {
-            "ports": [
-              "adder_1/c",
-              "reg_file_input_mux/next_ins_addr"
-            ]
-          },
-          "from_stack_1": {
-            "ports": [
-              "from_stack",
-              "reg_file_input_mux/from_stack"
-            ]
-          },
-          "CTRL_UNIT_ri_imm": {
-            "ports": [
-              "CTRL_UNIT/ri_imm",
-              "ri_imm_upper_concat/imm",
-              "ri_imm_ext/imm"
-            ]
-          },
-          "CTRL_UNIT_alu_op": {
-            "ports": [
-              "CTRL_UNIT/alu_op",
-              "ALU_CTRL/alu_op"
-            ]
-          },
-          "ALU_CTRL_op_nand": {
-            "ports": [
-              "ALU_CTRL/op_nand",
-              "ALU/op_nand"
-            ]
-          },
-          "ALU_CTRL_op_xor": {
-            "ports": [
-              "ALU_CTRL/op_xor",
-              "ALU/op_xor"
-            ]
-          },
-          "ALU_CTRL_op_add": {
-            "ports": [
-              "ALU_CTRL/op_add",
-              "ALU/op_add"
-            ]
-          },
-          "ALU_CTRL_op_sub": {
-            "ports": [
-              "ALU_CTRL/op_sub",
-              "ALU/op_sub"
-            ]
-          },
-          "ALU_CTRL_op_and": {
-            "ports": [
-              "ALU_CTRL/op_and",
-              "ALU/op_and"
-            ]
-          },
-          "ALU_CTRL_op_or": {
-            "ports": [
-              "ALU_CTRL/op_or",
-              "ALU/op_or"
-            ]
-          },
-          "ALU_CTRL_op_cmp": {
-            "ports": [
-              "ALU_CTRL/op_cmp",
-              "ALU/op_cmp"
-            ]
-          },
-          "ALU_CTRL_op_asl": {
-            "ports": [
-              "ALU_CTRL/op_asl",
-              "ALU/op_asl"
-            ]
-          },
-          "ALU_CTRL_op_asr": {
-            "ports": [
-              "ALU_CTRL/op_asr",
-              "ALU/op_asr"
-            ]
-          },
-          "CTRL_UNIT_alu_input_sel": {
-            "ports": [
-              "CTRL_UNIT/alu_input_sel",
-              "alu_mux/sel"
-            ]
-          },
-          "reg_file_input_mux_output_reg": {
-            "ports": [
-              "reg_file_input_mux/output_reg",
-              "reg_file/regC"
-            ]
-          },
-          "CTRL_UNIT_reg_file_wr": {
-            "ports": [
-              "CTRL_UNIT/reg_file_wr",
-              "reg_file/wr_en"
-            ]
-          },
-          "CTRL_UNIT_regA_addr": {
-            "ports": [
-              "CTRL_UNIT/regA_addr",
-              "reg_file/read_addrA"
-            ]
-          },
-          "CTRL_UNIT_regB_addr": {
-            "ports": [
-              "CTRL_UNIT/regB_addr",
-              "reg_file/read_addrB"
-            ]
-          },
-          "CTRL_UNIT_dest_addr": {
-            "ports": [
-              "CTRL_UNIT/dest_addr",
-              "reg_file/write_addrC"
-            ]
-          },
-          "reg_file_regB": {
-            "ports": [
-              "reg_file/regB",
-              "regB",
-              "alu_mux/a"
-            ]
-          },
-          "data_mem_1": {
-            "ports": [
-              "data_mem",
-              "reg_file_input_mux/data_mem"
-            ]
-          },
-          "ri_imm_upper_concat_0_upper_concat": {
-            "ports": [
-              "ri_imm_upper_concat/upper_concat",
-              "imm_mux/a"
-            ]
-          },
-          "ri_imm_ext_z_ext_imm": {
-            "ports": [
-              "ri_imm_ext/z_ext_imm",
-              "imm_mux/b"
-            ]
-          },
-          "CTRL_UNIT_ri_imm_format_sel": {
-            "ports": [
-              "CTRL_UNIT/ri_imm_format_sel",
-              "imm_mux/sel"
-            ]
-          },
-          "CTRL_UNIT_reg_file_input_sel": {
-            "ports": [
-              "CTRL_UNIT/reg_file_input_sel",
-              "reg_file_input_mux/sel"
-            ]
-          },
-          "async_rst_1": {
-            "ports": [
-              "async_rst",
-              "PC/async_rst",
-              "reg_file/rst",
-              "stack_ptr_reg/rst",
-              "cmp_status_reg/rst"
-            ]
-          },
-          "reg_file_outvalue": {
-            "ports": [
-              "reg_file/outvalue",
-              "outvalue"
-            ]
-          },
-          "inr_1": {
-            "ports": [
-              "inr",
-              "reg_file/inr"
-            ]
-          },
-          "mux_2_to_1_0_c": {
-            "ports": [
-              "imm_mux/c",
-              "alu_mux/b"
-            ]
-          },
-          "mux_2_to_1_1_c": {
-            "ports": [
-              "alu_mux/c",
-              "ALU/inputB"
-            ]
-          },
-          "mux_2_to_1_0_c1": {
-            "ports": [
-              "pc_load_mux/c",
-              "PC/ld_val"
-            ]
-          }
-        }
-      },
       "programmer": {
         "ports": {
-          "dout": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "addr": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
           "clk": {
             "type": "clk",
             "direction": "I"
           },
           "UART_TXD_IN": {
             "direction": "I"
-          },
-          "UART_RXD_OUT": {
-            "direction": "O"
           },
           "clk1": {
             "type": "clk",
@@ -1424,7 +116,7 @@
           "cpu_clk_en": {
             "direction": "O"
           },
-          "sig_out3": {
+          "rst": {
             "direction": "O"
           }
         },
@@ -1673,14 +365,12 @@
           "uart_programmer_dout": {
             "ports": [
               "uart_programmer/dout",
-              "dout",
               "sync_data_to_cpu_clk/word"
             ]
           },
           "uart_programmer_addr": {
             "ports": [
               "uart_programmer/addr",
-              "addr",
               "sync_addr_to_CPU_clk/word"
             ]
           },
@@ -1701,12 +391,6 @@
             "ports": [
               "uart/tx_ready",
               "uart_programmer/tx_ready"
-            ]
-          },
-          "uart_tx": {
-            "ports": [
-              "uart/tx",
-              "UART_RXD_OUT"
             ]
           },
           "uart_rx_data": {
@@ -1795,7 +479,7 @@
           "sync_pc_rst_to_cpu_clk_sig_out": {
             "ports": [
               "sync_pc_rst_to_cpu_clk/sig_out",
-              "sig_out3"
+              "rst"
             ]
           }
         }
@@ -1988,91 +672,913 @@
             ]
           }
         }
+      },
+      "cpu_uart": {
+        "vlnv": "xilinx.com:module_ref:uart:1.0",
+        "xci_name": "design_1_uart_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "uart",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "rx": {
+            "direction": "I"
+          },
+          "rx_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "rx_ready": {
+            "direction": "O"
+          },
+          "tx_buff": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "tx_start_trans": {
+            "direction": "I"
+          },
+          "tx": {
+            "direction": "O"
+          },
+          "tx_ready": {
+            "direction": "O"
+          }
+        }
+      },
+      "memory": {
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "ins_addr": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "cur_ins": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "stack_addr": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "stack_out": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "data_in": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "wr_addr": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "data_out": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "wr_en": {
+            "direction": "I"
+          },
+          "stack_wr_en": {
+            "direction": "I"
+          },
+          "prog_addr1": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "prog_mode": {
+            "direction": "I"
+          },
+          "prog_data1": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "prog_wr1": {
+            "direction": "I"
+          },
+          "prog_wr": {
+            "direction": "I"
+          },
+          "rx_buff": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "tx_buff": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "clk1": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "sig_out": {
+            "direction": "O"
+          },
+          "sig_in": {
+            "direction": "I"
+          },
+          "sig_in1": {
+            "direction": "I"
+          }
+        },
+        "components": {
+          "prog_mem": {
+            "vlnv": "xilinx.com:module_ref:prog_mem:1.0",
+            "xci_name": "design_1_prog_mem_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "prog_mem",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "ins_addr": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "prog_data": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "prog_addr": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "prog_wr": {
+                "direction": "I"
+              },
+              "cur_ins": {
+                "direction": "O",
+                "left": "15",
+                "right": "0"
+              }
+            }
+          },
+          "mem_maped_uart": {
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "tx_buff": {
+                "direction": "O",
+                "left": "7",
+                "right": "0"
+              },
+              "rx_buff": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "clk1": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "sig_out": {
+                "direction": "O"
+              },
+              "sig_in": {
+                "direction": "I"
+              },
+              "sig_in1": {
+                "direction": "I"
+              },
+              "data_in": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "wr_en": {
+                "direction": "I"
+              }
+            },
+            "components": {
+              "sync_extern_0": {
+                "vlnv": "xilinx.com:module_ref:sync_extern:1.0",
+                "xci_name": "design_1_sync_extern_0_4",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "sync_extern",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I"
+                  },
+                  "sig_in": {
+                    "direction": "I"
+                  },
+                  "sig_out": {
+                    "direction": "O"
+                  }
+                }
+              },
+              "sync_extern_1": {
+                "vlnv": "xilinx.com:module_ref:sync_extern:1.0",
+                "xci_name": "design_1_sync_extern_1_1",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "sync_extern",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I"
+                  },
+                  "sig_in": {
+                    "direction": "I"
+                  },
+                  "sig_out": {
+                    "direction": "O"
+                  }
+                }
+              },
+              "sync_extern_2": {
+                "vlnv": "xilinx.com:module_ref:sync_extern:1.0",
+                "xci_name": "design_1_sync_extern_2_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "sync_extern",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I"
+                  },
+                  "sig_in": {
+                    "direction": "I"
+                  },
+                  "sig_out": {
+                    "direction": "O"
+                  }
+                }
+              },
+              "sync_byte_0": {
+                "vlnv": "xilinx.com:module_ref:sync_byte:1.0",
+                "xci_name": "design_1_sync_byte_0_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "sync_byte",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I"
+                  },
+                  "byte": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0"
+                  },
+                  "stable_byte": {
+                    "direction": "O",
+                    "left": "7",
+                    "right": "0"
+                  }
+                }
+              },
+              "sync_byte_1": {
+                "vlnv": "xilinx.com:module_ref:sync_byte:1.0",
+                "xci_name": "design_1_sync_byte_1_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "sync_byte",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I"
+                  },
+                  "byte": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0"
+                  },
+                  "stable_byte": {
+                    "direction": "O",
+                    "left": "7",
+                    "right": "0"
+                  }
+                }
+              },
+              "uart_controller": {
+                "vlnv": "xilinx.com:module_ref:uart_controller:1.0",
+                "xci_name": "design_1_uart_controller_0_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "uart_controller",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I"
+                  },
+                  "tx_buff": {
+                    "direction": "O",
+                    "left": "7",
+                    "right": "0"
+                  },
+                  "rx_buff": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0"
+                  },
+                  "rx_ready": {
+                    "direction": "I"
+                  },
+                  "tx_ready": {
+                    "direction": "I"
+                  },
+                  "tx_start_trans": {
+                    "direction": "O"
+                  },
+                  "tx_buff_data_in": {
+                    "direction": "I",
+                    "left": "15",
+                    "right": "0"
+                  },
+                  "tx_buff_wr": {
+                    "direction": "I"
+                  }
+                }
+              }
+            },
+            "nets": {
+              "clk_1": {
+                "ports": [
+                  "clk",
+                  "sync_extern_1/clk",
+                  "sync_extern_2/clk",
+                  "sync_byte_0/clk",
+                  "uart_controller/clk"
+                ]
+              },
+              "uart_controller_tx_start_trans": {
+                "ports": [
+                  "uart_controller/tx_start_trans",
+                  "sync_extern_0/sig_in"
+                ]
+              },
+              "clk1_1": {
+                "ports": [
+                  "clk1",
+                  "sync_extern_0/clk",
+                  "sync_byte_1/clk"
+                ]
+              },
+              "sync_extern_0_sig_out": {
+                "ports": [
+                  "sync_extern_0/sig_out",
+                  "sig_out"
+                ]
+              },
+              "rx_buff_1": {
+                "ports": [
+                  "rx_buff",
+                  "sync_byte_0/byte"
+                ]
+              },
+              "sync_byte_0_stable_word": {
+                "ports": [
+                  "sync_byte_0/stable_byte",
+                  "uart_controller/rx_buff"
+                ]
+              },
+              "sync_extern_1_sig_out": {
+                "ports": [
+                  "sync_extern_1/sig_out",
+                  "uart_controller/rx_ready"
+                ]
+              },
+              "sig_in_1": {
+                "ports": [
+                  "sig_in",
+                  "sync_extern_1/sig_in"
+                ]
+              },
+              "sig_in1_1": {
+                "ports": [
+                  "sig_in1",
+                  "sync_extern_2/sig_in"
+                ]
+              },
+              "sync_extern_2_sig_out": {
+                "ports": [
+                  "sync_extern_2/sig_out",
+                  "uart_controller/tx_ready"
+                ]
+              },
+              "uart_controller_tx_buff": {
+                "ports": [
+                  "uart_controller/tx_buff",
+                  "sync_byte_1/byte"
+                ]
+              },
+              "sync_byte_1_stable_word": {
+                "ports": [
+                  "sync_byte_1/stable_byte",
+                  "tx_buff"
+                ]
+              },
+              "data_in_1": {
+                "ports": [
+                  "data_in",
+                  "uart_controller/tx_buff_data_in"
+                ]
+              },
+              "wr_en_1": {
+                "ports": [
+                  "wr_en",
+                  "uart_controller/tx_buff_wr"
+                ]
+              }
+            }
+          },
+          "data_mem": {
+            "vlnv": "xilinx.com:module_ref:data_mem:1.0",
+            "xci_name": "design_1_data_mem_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "data_mem",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "rd_addr": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "wr_addr": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "data_in": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "stack_addr": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "prog_addr": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "prog_data": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "stack_wr_en": {
+                "direction": "I"
+              },
+              "wr_en": {
+                "direction": "I"
+              },
+              "prog_wr": {
+                "direction": "I"
+              },
+              "prog_mode": {
+                "direction": "I"
+              },
+              "data_out": {
+                "direction": "O",
+                "left": "15",
+                "right": "0"
+              },
+              "stack_out": {
+                "direction": "O",
+                "left": "15",
+                "right": "0"
+              }
+            }
+          }
+        },
+        "nets": {
+          "clk_1": {
+            "ports": [
+              "clk",
+              "prog_mem/clk",
+              "mem_maped_uart/clk",
+              "data_mem/clk"
+            ]
+          },
+          "ins_addr_1": {
+            "ports": [
+              "ins_addr",
+              "prog_mem/ins_addr"
+            ]
+          },
+          "prog_mem_cur_ins": {
+            "ports": [
+              "prog_mem/cur_ins",
+              "cur_ins"
+            ]
+          },
+          "stack_addr_1": {
+            "ports": [
+              "stack_addr",
+              "data_mem/stack_addr"
+            ]
+          },
+          "data_mem_stack_out": {
+            "ports": [
+              "data_mem/stack_out",
+              "stack_out"
+            ]
+          },
+          "data_in_1": {
+            "ports": [
+              "data_in",
+              "mem_maped_uart/data_in",
+              "data_mem/rd_addr",
+              "data_mem/data_in"
+            ]
+          },
+          "wr_addr_1": {
+            "ports": [
+              "wr_addr",
+              "data_mem/wr_addr"
+            ]
+          },
+          "data_mem_data_out": {
+            "ports": [
+              "data_mem/data_out",
+              "data_out"
+            ]
+          },
+          "wr_en_1": {
+            "ports": [
+              "wr_en",
+              "mem_maped_uart/wr_en",
+              "data_mem/wr_en"
+            ]
+          },
+          "stack_wr_en_1": {
+            "ports": [
+              "stack_wr_en",
+              "data_mem/stack_wr_en"
+            ]
+          },
+          "prog_addr1_1": {
+            "ports": [
+              "prog_addr1",
+              "prog_mem/prog_addr",
+              "data_mem/prog_addr"
+            ]
+          },
+          "prog_mode_1": {
+            "ports": [
+              "prog_mode",
+              "data_mem/prog_mode"
+            ]
+          },
+          "prog_data1_1": {
+            "ports": [
+              "prog_data1",
+              "prog_mem/prog_data",
+              "data_mem/prog_data"
+            ]
+          },
+          "prog_wr1_1": {
+            "ports": [
+              "prog_wr1",
+              "data_mem/prog_wr"
+            ]
+          },
+          "prog_wr_1": {
+            "ports": [
+              "prog_wr",
+              "prog_mem/prog_wr"
+            ]
+          },
+          "rx_buff_1": {
+            "ports": [
+              "rx_buff",
+              "mem_maped_uart/rx_buff"
+            ]
+          },
+          "uart_controller_0_tx_buff": {
+            "ports": [
+              "mem_maped_uart/tx_buff",
+              "tx_buff"
+            ]
+          },
+          "clk1_1": {
+            "ports": [
+              "clk1",
+              "mem_maped_uart/clk1"
+            ]
+          },
+          "mem_maped_uart_sig_out": {
+            "ports": [
+              "mem_maped_uart/sig_out",
+              "sig_out"
+            ]
+          },
+          "sig_in_1": {
+            "ports": [
+              "sig_in",
+              "mem_maped_uart/sig_in"
+            ]
+          },
+          "sig_in1_1": {
+            "ports": [
+              "sig_in1",
+              "mem_maped_uart/sig_in1"
+            ]
+          }
+        }
+      },
+      "shell_cpu_top": {
+        "vlnv": "xilinx.com:module_ref:shell_cpu_top:1.0",
+        "xci_name": "design_1_shell_cpu_top_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "shell_cpu_top",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "data_mem": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "data_mem_wr": {
+            "direction": "O"
+          },
+          "from_stack": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "inr": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "ins_addr": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "instruction": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "outvalue": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "regA": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "regB": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "stack_ptr": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "stack_wr": {
+            "direction": "O"
+          }
+        }
+      },
+      "seg_display": {
+        "ports": {
+          "seg_sel": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "seg": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "clk_in": {
+            "direction": "I"
+          },
+          "pc_in": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "data": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          }
+        },
+        "components": {
+          "display_ctrl_0": {
+            "vlnv": "xilinx.com:module_ref:display_ctrl:1.0",
+            "xci_name": "design_1_display_ctrl_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "display_ctrl",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "pc_in": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "data": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "data_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "nexys_7seg_0": {
+            "vlnv": "xilinx.com:module_ref:nexys_7seg:1.0",
+            "xci_name": "design_1_nexys_7seg_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "nexys_7seg",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "seg": {
+                "direction": "O",
+                "left": "7",
+                "right": "0"
+              },
+              "seg_sel": {
+                "direction": "O",
+                "left": "7",
+                "right": "0"
+              },
+              "data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "clk_div_0": {
+            "vlnv": "xilinx.com:module_ref:clk_div:1.0",
+            "xci_name": "design_1_clk_div_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "clk_div",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk_in": {
+                "direction": "I"
+              },
+              "clk_out": {
+                "direction": "O"
+              }
+            }
+          }
+        },
+        "nets": {
+          "nexys_7seg_0_seg_sel": {
+            "ports": [
+              "nexys_7seg_0/seg_sel",
+              "seg_sel"
+            ]
+          },
+          "nexys_7seg_0_seg": {
+            "ports": [
+              "nexys_7seg_0/seg",
+              "seg"
+            ]
+          },
+          "Net": {
+            "ports": [
+              "clk_div_0/clk_out",
+              "display_ctrl_0/clk",
+              "nexys_7seg_0/clk"
+            ]
+          },
+          "display_ctrl_0_data_out": {
+            "ports": [
+              "display_ctrl_0/data_out",
+              "nexys_7seg_0/data"
+            ]
+          },
+          "clk_in_1": {
+            "ports": [
+              "clk_in",
+              "clk_div_0/clk_in"
+            ]
+          },
+          "pc_in_1": {
+            "ports": [
+              "pc_in",
+              "display_ctrl_0/pc_in"
+            ]
+          },
+          "data_1": {
+            "ports": [
+              "data",
+              "display_ctrl_0/data"
+            ]
+          }
+        }
       }
     },
     "nets": {
-      "clk_1": {
-        "ports": [
-          "clock_gen/c",
-          "CPU/clk"
-        ]
-      },
-      "PC_ins_addr": {
-        "ports": [
-          "CPU/ins_addr",
-          "memory/ins_addr"
-        ]
-      },
-      "reg_file_regA": {
-        "ports": [
-          "CPU/regA",
-          "memory/data_in"
-        ]
-      },
-      "reg_file_regB": {
-        "ports": [
-          "CPU/regB",
-          "memory/wr_addr"
-        ]
-      },
-      "stack_addr_1": {
-        "ports": [
-          "CPU/stack_ptr",
-          "memory/stack_addr"
-        ]
-      },
       "memory_cur_ins": {
         "ports": [
           "memory/cur_ins",
-          "CPU/instruction"
-        ]
-      },
-      "stack_wr_en_1": {
-        "ports": [
-          "CPU/stack_wr",
-          "memory/stack_wr_en"
-        ]
-      },
-      "wr_en_1": {
-        "ports": [
-          "CPU/data_mem_wr",
-          "memory/wr_en"
+          "shell_cpu_top/instruction"
         ]
       },
       "memory_data_out": {
         "ports": [
           "memory/data_out",
-          "CPU/data_mem"
+          "shell_cpu_top/data_mem"
         ]
       },
       "memory_stack_out": {
         "ports": [
           "memory/stack_out",
-          "CPU/from_stack"
-        ]
-      },
-      "prog_data_1": {
-        "ports": [
-          "programmer/dout",
-          "memory/prog_data"
-        ]
-      },
-      "prog_addr_1": {
-        "ports": [
-          "programmer/addr",
-          "memory/prog_addr"
+          "shell_cpu_top/from_stack",
+          "seg_display/data"
         ]
       },
       "UART_TXD_IN_1": {
         "ports": [
           "UART_TXD_IN",
-          "programmer/UART_TXD_IN"
-        ]
-      },
-      "programmer_UART_RXD_OUT": {
-        "ports": [
-          "programmer/UART_RXD_OUT",
-          "UART_RXD_OUT"
+          "programmer/UART_TXD_IN",
+          "cpu_uart/rx"
         ]
       },
       "CLK100MHZ_2": {
@@ -2084,8 +1590,9 @@
       "clk_2": {
         "ports": [
           "clock_gen/CPU_CLK",
+          "programmer/clk1",
           "memory/clk",
-          "programmer/clk1"
+          "seg_display/clk_in"
         ]
       },
       "prog_addr1_1": {
@@ -2097,7 +1604,8 @@
       "prog_mode_2": {
         "ports": [
           "programmer/sig_out",
-          "memory/prog_mode"
+          "memory/prog_mode",
+          "LED16_G"
         ]
       },
       "prog_data1_1": {
@@ -2121,7 +1629,9 @@
       "clock_gen_clk_100Mhz": {
         "ports": [
           "clock_gen/clk_100Mhz",
-          "programmer/clk"
+          "programmer/clk",
+          "cpu_uart/clk",
+          "memory/clk1"
         ]
       },
       "programmer_cpu_clk_en": {
@@ -2130,22 +1640,114 @@
           "clock_gen/sig_in"
         ]
       },
-      "CPU_outvalue": {
-        "ports": [
-          "CPU/outvalue",
-          "outvalue"
-        ]
-      },
       "inr_1": {
         "ports": [
           "inr",
-          "CPU/inr"
+          "shell_cpu_top/inr"
         ]
       },
       "async_rst_1": {
         "ports": [
-          "programmer/sig_out3",
-          "CPU/async_rst"
+          "programmer/rst",
+          "shell_cpu_top/rst",
+          "LED17_B"
+        ]
+      },
+      "shell_cpu_top_0_data_mem_wr": {
+        "ports": [
+          "shell_cpu_top/data_mem_wr",
+          "memory/wr_en"
+        ]
+      },
+      "shell_cpu_top_0_stack_ptr": {
+        "ports": [
+          "shell_cpu_top/stack_ptr",
+          "memory/stack_addr"
+        ]
+      },
+      "shell_cpu_top_0_ins_addr": {
+        "ports": [
+          "shell_cpu_top/ins_addr",
+          "memory/ins_addr",
+          "seg_display/pc_in"
+        ]
+      },
+      "shell_cpu_top_0_outvalue": {
+        "ports": [
+          "shell_cpu_top/outvalue",
+          "outvalue"
+        ]
+      },
+      "shell_cpu_top_0_regB": {
+        "ports": [
+          "shell_cpu_top/regB",
+          "memory/wr_addr"
+        ]
+      },
+      "shell_cpu_top_0_stack_wr": {
+        "ports": [
+          "shell_cpu_top/stack_wr",
+          "memory/stack_wr_en"
+        ]
+      },
+      "shell_cpu_top_0_regA": {
+        "ports": [
+          "shell_cpu_top/regA",
+          "memory/data_in"
+        ]
+      },
+      "uart_0_tx": {
+        "ports": [
+          "cpu_uart/tx",
+          "UART_RXD_OUT"
+        ]
+      },
+      "uart_0_rx_data": {
+        "ports": [
+          "cpu_uart/rx_data",
+          "memory/rx_buff"
+        ]
+      },
+      "memory_tx_buff": {
+        "ports": [
+          "memory/tx_buff",
+          "cpu_uart/tx_buff"
+        ]
+      },
+      "memory_sig_out": {
+        "ports": [
+          "memory/sig_out",
+          "cpu_uart/tx_start_trans"
+        ]
+      },
+      "cpu_uart_rx_ready": {
+        "ports": [
+          "cpu_uart/rx_ready",
+          "memory/sig_in"
+        ]
+      },
+      "cpu_uart_tx_ready": {
+        "ports": [
+          "cpu_uart/tx_ready",
+          "memory/sig_in1"
+        ]
+      },
+      "seg_display_seg_sel": {
+        "ports": [
+          "seg_display/seg_sel",
+          "seg_sel"
+        ]
+      },
+      "seg_display_seg": {
+        "ports": [
+          "seg_display/seg",
+          "seg"
+        ]
+      },
+      "clock_gen_c": {
+        "ports": [
+          "clock_gen/c",
+          "shell_cpu_top/clk"
         ]
       }
     }

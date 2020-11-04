@@ -1,16 +1,7 @@
 Vivado Simulator 2018.3
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: /tools/Xilinx/Vivado/2018.3/bin/unwrapped/lnx64.o/xelab -wto 0bbadb2d593f42598df4aae8ffb3ec95 --incr --debug typical --relax --mt 8 --include ../../../../shell_imp.ip_user_files/bd/design_1/ip/design_1_xlconstant_0_0/sim -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot imm_ext_sign_tb_behav xil_defaultlib.imm_ext_sign_tb xil_defaultlib.glbl -log elaborate.log 
+Running: /tools/Xilinx/Vivado/2018.3/bin/unwrapped/lnx64.o/xelab -wto 0bbadb2d593f42598df4aae8ffb3ec95 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot shell_cpu_sim_behav xil_defaultlib.shell_cpu_sim xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling module xil_defaultlib.glbl
-Compiling architecture behavioral of entity xil_defaultlib.imm_ext [imm_ext_default]
-Compiling architecture behavioral of entity xil_defaultlib.imm_ext_sign_tb
-Built simulation snapshot imm_ext_sign_tb_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

@@ -90,9 +90,11 @@ program_run()
 f.close()
 print("Shell CPU > ", end='')
 while(1):
+    break
     data = ser.read()
     if data == b'\x00':
         print("\n")
         break
     print(data.decode(), end='')
+print("")
 ser.close()

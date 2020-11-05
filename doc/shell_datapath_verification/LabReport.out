@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Datapath Verification Overview }{}% 1
+\BOOKMARK [1][-]{section.2}{ General Instruction Testing }{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Add type RRR instruction verification}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Sub type RRR instruction verification}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{And instruction verification}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Or instruction verification}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Xor instruction verification}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{Nand instruction verification}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.7}{Asr instruction verification}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.8}{Asl instruction verification}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.9}{Addi instruction verification}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.10}{Subi instruction verification}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.11}{Lui instruction verification}{section.2}% 13
+\BOOKMARK [1][-]{section.3}{ Branching Instruction Testing}{}% 14
+\BOOKMARK [2][-]{subsection.3.1}{CMP instruction verification}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.2}{Beq instruction verification}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.3}{Jalr instruction verification}{section.3}% 17
+\BOOKMARK [1][-]{section.4}{ CPU Test Program }{}% 18

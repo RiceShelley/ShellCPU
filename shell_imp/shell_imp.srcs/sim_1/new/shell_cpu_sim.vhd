@@ -91,6 +91,7 @@ architecture Behavioral of shell_cpu_sim is
     signal regB : std_logic_vector(15 downto 0);
     signal stack_ptr : std_logic_vector(15 downto 0);
     signal stack_wr : std_logic;
+    signal proc_rst : std_logic := '1';
     
 begin
 
@@ -128,77 +129,27 @@ begin
         cur_ins => instruction
     );
     
-
     tb_proc : process
     begin
 
-        rst <= '1';
+        -- Rst processor
+        if (proc_rst = '1') then
+            rst <= '1';
+            
+            wait for 2us;
+            clk <= '1';
+            wait for 2us;
+            clk <= '0';
+            
+            rst <= '0';
+            proc_rst <= '0';
+        end if;
         
-
+        -- run 1 instruction 
         wait for 2us;
         clk <= '1';
         wait for 2us;
         clk <= '0';
-        
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        
-        rst <= '0';
-        
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-        
-        wait for 2us;
-        clk <= '1';
-        wait for 2us;
-        clk <= '0';
-         wait for 20us;
     
     end process tb_proc;
     

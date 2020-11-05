@@ -173,10 +173,14 @@ for l in f:
                 l = l.replace(label[0], str(label[1] - addr))
             else:
                 # append address to data memory
+                print(label)
                 if len(label) == 2:
                     label.append(cur_data_mem_addr)
                     dmem.write(str(format(int(label[1]), '016b')) + "\n")
                 l = l.replace(label[0], str(label[2]))
+                print(label[0])
+                print(label[2])
+                print(label)
                 cur_data_mem_addr += 1
             print(l)
 

@@ -1,0 +1,37 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Datapath Verification Overview }{2}{section.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2} General Instruction Testing }{3}{section.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Add type RRR instruction verification}{3}{subsection.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Sub type RRR instruction verification}{4}{subsection.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3}And instruction verification}{5}{subsection.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4}Or instruction verification}{6}{subsection.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5}Xor instruction verification}{7}{subsection.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.6}Nand instruction verification}{8}{subsection.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.7}Asr instruction verification}{9}{subsection.2.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.8}Asl instruction verification}{10}{subsection.2.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.9}Addi instruction verification}{11}{subsection.2.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.10}Subi instruction verification}{12}{subsection.2.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.11}Lui instruction verification}{13}{subsection.2.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3} Branching Instruction Testing}{14}{section.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}CMP instruction verification}{14}{subsection.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Beq instruction verification}{15}{subsection.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3}Jalr instruction verification}{16}{subsection.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4} CPU Test Program }{17}{section.4}

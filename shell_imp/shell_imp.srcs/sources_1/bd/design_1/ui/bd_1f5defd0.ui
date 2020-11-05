@@ -1,117 +1,54 @@
 {
-   "ExpandedHierarchyInLayout":"/programmer|/clock_gen|/memory",
+   "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port LED17_B -pg 1 -y 20 -defaultsOSRD
-preplace port UART_TXD_IN -pg 1 -y 570 -defaultsOSRD
-preplace port LED16_G -pg 1 -y 290 -defaultsOSRD
-preplace port UART_RXD_OUT -pg 1 -y 860 -defaultsOSRD
-preplace port CLK100MHZ -pg 1 -y 190 -defaultsOSRD
-preplace portBus outvalue -pg 1 -y 140 -defaultsOSRD
-preplace portBus seg_sel -pg 1 -y 210 -defaultsOSRD
-preplace portBus seg -pg 1 -y 230 -defaultsOSRD
-preplace portBus inr -pg 1 -y 420 -defaultsOSRD
-preplace inst memory|data_mem -pg 1 -lvl 1 -y 430 -defaultsOSRD
-preplace inst programmer|sync_data_to_cpu_clk -pg 1 -lvl 3 -y 792 -defaultsOSRD
-preplace inst programmer -pg 1 -lvl 1 -y 572 -defaultsOSRD
-preplace inst clock_gen|sync_extern -pg 1 -lvl 1 -y 330 -defaultsOSRD
-preplace inst shell_cpu_top -pg 1 -lvl 3 -y 160 -defaultsOSRD
-preplace inst programmer|uart_programmer -pg 1 -lvl 2 -y 882 -defaultsOSRD
-preplace inst programmer|sync_prog_mem_wr_to_cpu_clk -pg 1 -lvl 3 -y 1032 -defaultsOSRD
-preplace inst seg_display -pg 1 -lvl 5 -y 220 -defaultsOSRD
-preplace inst clock_gen|clk_wiz -pg 1 -lvl 1 -y 190 -defaultsOSRD
-preplace inst programmer|uart -pg 1 -lvl 1 -y 932 -defaultsOSRD
-preplace inst programmer|sync_data_mem_wr_to_cpu_clk -pg 1 -lvl 3 -y 672 -defaultsOSRD
-preplace inst cpu_uart -pg 1 -lvl 5 -y 850 -defaultsOSRD
-preplace inst memory -pg 1 -lvl 4 -y 450 -defaultsOSRD
-preplace inst memory|prog_mem -pg 1 -lvl 1 -y 670 -defaultsOSRD
-preplace inst programmer|sync_addr_to_CPU_clk -pg 1 -lvl 3 -y 552 -defaultsOSRD
-preplace inst clock_gen -pg 1 -lvl 2 -y 110 -defaultsOSRD
-preplace inst memory|mem_maped_uart -pg 1 -lvl 1 -y 870 -defaultsOSRD
-preplace inst clock_gen|and_gate -pg 1 -lvl 2 -y 130 -defaultsOSRD
-preplace inst programmer|sync_pc_rst_to_cpu_clk -pg 1 -lvl 3 -y 1172 -defaultsOSRD
-preplace inst programmer|sync_prog_mode_to_CPU_clk -pg 1 -lvl 3 -y 912 -defaultsOSRD
-preplace netloc programmer|sync_data_to_cpu_clk_stable_word 1 3 1 N
-preplace netloc clk_2 1 0 5 -70 10 NJ 10 1960 300 2440 200 NJ
-preplace netloc programmer|uart_programmer_addr 1 2 1 700
-preplace netloc programmer|uart_programmer_cpu_rst 1 2 1 700
-preplace netloc memory|wr_addr_1 1 0 1 2610
-preplace netloc uart_0_tx 1 5 1 NJ
-preplace netloc memory|ins_addr_1 1 0 1 2620
-preplace netloc clock_gen_c 1 2 1 N
-preplace netloc memory|wr_en_1 1 0 1 2610
-preplace netloc UART_TXD_IN_1 1 0 5 -80 1262 NJ 1262 NJ 1262 NJ 1262 3220
-preplace netloc programmer|uart_programmer_dout 1 2 1 730
-preplace netloc clock_gen_clk_100Mhz 1 0 5 -60 1272 1220J 1252 1950 1042 2410 1000 3200
-preplace netloc prog_mode_2 1 1 5 NJ 772 NJ 772 2360 240 3210J 290 NJ
-preplace netloc memory|clk_1 1 0 1 2630
-preplace netloc memory|stack_wr_en_1 1 0 1 2650
-preplace netloc programmer|sync_extern_1_sig_out 1 3 1 1040
-preplace netloc cpu_uart_tx_ready 1 3 3 2440 1020 NJ 1020 3520
-preplace netloc memory|prog_data1_1 1 0 1 2680
-preplace netloc programmer|sync_word_to_CPU_clk_sync_word 1 3 1 N
-preplace netloc memory|clk1_1 1 0 1 N
-preplace netloc programmer|UART_TXD_IN_1 1 0 1 N
-preplace netloc programmer_cpu_clk_en 1 1 1 1220
-preplace netloc memory|data_in_1 1 0 1 2640
-preplace netloc clock_gen|clk_wiz_CLK100Mhz 1 1 2 NJ 200 NJ
-preplace netloc shell_cpu_top_0_outvalue 1 3 3 NJ 140 NJ 140 NJ
-preplace netloc memory|data_mem_stack_out 1 1 1 N
-preplace netloc uart_0_rx_data 1 3 3 2430 1010 NJ 1010 3530
-preplace netloc memory_stack_out 1 2 3 1970 290 2340J 230 3220
-preplace netloc programmer|uart_programmer_data_mem_wr 1 2 1 710
-preplace netloc prog_data1_1 1 1 3 NJ 792 NJ 792 2380
-preplace netloc programmer|sync_extern_0_sig_out1 1 3 1 N
-preplace netloc programmer|uart_programmer_cpu_clk_en 1 2 2 710 1102 NJ
-preplace netloc async_rst_1 1 1 5 1210J 20 1970 20 NJ 20 NJ 20 NJ
-preplace netloc programmer_sig_out2 1 1 3 NJ 1032 NJ 1032 2400
-preplace netloc seg_display_seg_sel 1 5 1 NJ
-preplace netloc programmer|sync_pc_rst_to_cpu_clk_sig_out 1 3 1 N
-preplace netloc programmer|clk_1 1 0 2 90 842 N
-preplace netloc programmer|uart_programmer_prog_mode 1 2 1 N
-preplace netloc cpu_uart_rx_ready 1 3 3 2420 1030 NJ 1030 3540
-preplace netloc clock_gen|and_gate_c 1 2 1 N
-preplace netloc programmer|clk1_1 1 0 3 NJ 1022 NJ 1022 720
-preplace netloc memory|prog_mem_cur_ins 1 1 1 3030
-preplace netloc shell_cpu_top_0_stack_wr 1 3 1 2320
-preplace netloc memory|sig_in_1 1 0 1 N
-preplace netloc memory|prog_wr_1 1 0 1 N
-preplace netloc memory|stack_addr_1 1 0 1 N
-preplace netloc clock_gen|sig_in_1 1 0 1 N
-preplace netloc memory_tx_buff 1 4 1 N
-preplace netloc programmer|uart_programmer_prog_mem_wr 1 2 1 730
-preplace netloc clock_gen|b_1 1 0 3 1420 120 1640 220 NJ
-preplace netloc inr_1 1 0 3 -80J 30 NJ 30 1950J
-preplace netloc programmer|uart_rx_data 1 1 1 N
-preplace netloc memory_sig_out 1 4 1 N
-preplace netloc memory|prog_addr1_1 1 0 1 2660
+preplace port LED17_B -pg 1 -y 650 -defaultsOSRD
+preplace port UART_TXD_IN -pg 1 -y 370 -defaultsOSRD
+preplace port LED16_G -pg 1 -y 630 -defaultsOSRD
+preplace port UART_RXD_OUT -pg 1 -y 540 -defaultsOSRD
+preplace port CLK100MHZ -pg 1 -y 230 -defaultsOSRD
+preplace portBus outvalue -pg 1 -y 670 -defaultsOSRD
+preplace portBus seg_sel -pg 1 -y 750 -defaultsOSRD
+preplace portBus seg -pg 1 -y 770 -defaultsOSRD
+preplace portBus inr -pg 1 -y 150 -defaultsOSRD
+preplace inst programmer -pg 1 -lvl 1 -y 370 -defaultsOSRD
+preplace inst shell_cpu_top -pg 1 -lvl 3 -y 120 -defaultsOSRD
+preplace inst seg_display -pg 1 -lvl 5 -y 760 -defaultsOSRD
+preplace inst cpu_uart -pg 1 -lvl 5 -y 530 -defaultsOSRD
+preplace inst memory -pg 1 -lvl 4 -y 270 -defaultsOSRD
+preplace inst clock_gen -pg 1 -lvl 2 -y 240 -defaultsOSRD
+preplace netloc cpu_uart_rx_ready 1 3 3 1130 490 1460J 440 1790
+preplace netloc clock_gen_clk_100Mhz 1 0 5 20 250 350J 350 620 300 1010 500 NJ
+preplace netloc memory_cur_ins 1 2 3 690 240 1040J 60 1430
+preplace netloc memory_sig_out 1 4 1 1440
+preplace netloc shell_cpu_top_0_outvalue 1 3 3 1050J 670 NJ 670 NJ
 preplace netloc seg_display_seg 1 5 1 NJ
-preplace netloc memory|data_mem_data_out 1 1 1 3020
-preplace netloc shell_cpu_top_0_stack_ptr 1 3 1 2370
-preplace netloc clock_gen|sync_extern_sig_out 1 1 1 1650
-preplace netloc shell_cpu_top_0_regA 1 3 1 2380
-preplace netloc prog_addr1_1 1 1 3 NJ 552 NJ 552 2370
-preplace netloc shell_cpu_top_0_regB 1 3 1 2350
-preplace netloc memory|rx_buff_1 1 0 1 N
-preplace netloc memory|prog_mode_1 1 0 1 N
-preplace netloc shell_cpu_top_0_ins_addr 1 3 2 2430 210 3220J
-preplace netloc memory|mem_maped_uart_sig_out 1 1 1 N
-preplace netloc prog_wr1_1 1 1 3 NJ 812 NJ 812 2390
-preplace netloc memory_data_out 1 2 3 1980 40 NJ 40 3200
-preplace netloc programmer|uart_rx_ready 1 1 1 390
-preplace netloc programmer|uart_tx_ready 1 1 1 400
-preplace netloc programmer|sync_extern_0_sig_out 1 3 1 1030
-preplace netloc memory|sig_in1_1 1 0 1 N
-preplace netloc CLK100MHZ_2 1 0 2 NJ 190 NJ
-preplace netloc shell_cpu_top_0_data_mem_wr 1 3 1 2400
-preplace netloc memory_cur_ins 1 2 3 1980 280 2330J 220 3190
-preplace netloc memory|uart_controller_0_tx_buff 1 1 1 N
-preplace netloc clock_gen|CLK100MHZ_1 1 0 1 N
-preplace netloc memory|prog_wr1_1 1 0 1 2670
-levelinfo -pg 1 -100 180 1480 2160 2700 3370 3560 -top 0 -bot 1600
-levelinfo -hier programmer * 240 550 880 *
-levelinfo -hier clock_gen * 1530 1730 *
-levelinfo -hier memory * 2850 *
+preplace netloc seg_display_seg_sel 1 5 1 NJ
+preplace netloc programmer_cpu_clk_en 1 1 1 360
+preplace netloc prog_addr1_1 1 1 3 330 160 660J 260 NJ
+preplace netloc UART_TXD_IN_1 1 0 5 20 520 NJ 520 NJ 520 NJ 520 NJ
+preplace netloc shell_cpu_top_0_regA 1 3 1 1070
+preplace netloc shell_cpu_top_0_regB 1 3 1 1010
+preplace netloc async_rst_1 1 1 5 NJ 430 640 650 NJ 650 NJ 650 NJ
+preplace netloc programmer_sig_out2 1 1 3 380 340 NJ 340 NJ
+preplace netloc memory_data_out 1 2 3 670 290 1020J 480 1430
+preplace netloc memory_tx_buff 1 4 1 1470
+preplace netloc shell_cpu_top_0_stack_wr 1 3 1 1060
+preplace netloc prog_data1_1 1 1 3 340 310 NJ 310 1090J
+preplace netloc clk_2 1 0 5 30 480 NJ 480 650 250 1080 740 NJ
+preplace netloc cpu_uart_tx_ready 1 3 3 1120 680 NJ 680 1770
+preplace netloc uart_0_tx 1 5 1 NJ
+preplace netloc shell_cpu_top_0_data_mem_wr 1 3 1 1020
+preplace netloc prog_wr1_1 1 1 3 370 320 NJ 320 NJ
+preplace netloc memory_stack_out 1 2 3 680 280 1040J 470 1450
+preplace netloc clock_gen_c 1 2 1 620
+preplace netloc inr_1 1 0 3 NJ 150 NJ 150 NJ
+preplace netloc prog_mode_2 1 1 5 N 330 630J 350 1100 630 NJ 630 NJ
+preplace netloc CLK100MHZ_2 1 0 2 NJ 230 NJ
+preplace netloc uart_0_rx_data 1 3 3 1110 620 NJ 620 1780
+preplace netloc shell_cpu_top_0_stack_ptr 1 3 1 N
+preplace netloc shell_cpu_top_0_ins_addr 1 3 2 1030 760 NJ
+levelinfo -pg 1 0 180 500 850 1280 1620 1810 -top 0 -bot 830
 "
 }
 0

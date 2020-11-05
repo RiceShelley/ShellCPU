@@ -50,8 +50,8 @@ begin
     begin
         if rising_edge(clk) then
         
-            mem(2) <= x"FF00";
-            mem(3) <= "0000000000101010";
+            mem(2) <= "0000000000001011";
+            
             if (wr_en = '1') then
                 mem(to_integer(unsigned(wr_addr(9 downto 0)))) <= data_in;
             elsif (stack_wr_en = '1') then

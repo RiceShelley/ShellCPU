@@ -1,7 +1,33 @@
 Vivado Simulator 2018.3
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: /tools/Xilinx/Vivado/2018.3/bin/unwrapped/lnx64.o/xelab -wto 0bbadb2d593f42598df4aae8ffb3ec95 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cpu_branch_ins_tb_behav xil_defaultlib.cpu_branch_ins_tb xil_defaultlib.glbl -log elaborate.log 
+Running: /tools/Xilinx/Vivado/2018.3/bin/unwrapped/lnx64.o/xelab -wto 0bbadb2d593f42598df4aae8ffb3ec95 --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot MCU_Shell_Arch_tb_behav xil_defaultlib.MCU_Shell_Arch_tb xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling module xil_defaultlib.glbl
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.ALU_CTRL [alu_ctrl_default]
+Compiling architecture behavioral of entity xil_defaultlib.CTRL_UNIT [ctrl_unit_default]
+Compiling architecture behavioral of entity xil_defaultlib.prog_cnt_reg [prog_cnt_reg_default]
+Compiling architecture behavioral of entity xil_defaultlib.adder [adder_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux_2_to_1 [mux_2_to_1_default]
+Compiling architecture behavioral of entity xil_defaultlib.cmp_status_reg [cmp_status_reg_default]
+Compiling architecture behavioral of entity xil_defaultlib.imm_ext [imm_ext_default]
+Compiling architecture behavioral of entity xil_defaultlib.reg_file [reg_file_default]
+Compiling architecture behavioral of entity xil_defaultlib.reg_file_input_mux [reg_file_input_mux_default]
+Compiling architecture behavioral of entity xil_defaultlib.ri_imm_ext [ri_imm_ext_default]
+Compiling architecture behavioral of entity xil_defaultlib.ri_imm_upper_concat [ri_imm_upper_concat_default]
+Compiling architecture behavioral of entity xil_defaultlib.stack_ptr_reg [stack_ptr_reg_default]
+Compiling architecture behavioral of entity xil_defaultlib.shell_cpu_top [shell_cpu_top_default]
+Compiling architecture behavioral of entity xil_defaultlib.MCU_data_mem [mcu_data_mem_default]
+Compiling architecture behavioral of entity xil_defaultlib.MCU_ins_mem [mcu_ins_mem_default]
+Compiling architecture behavioral of entity xil_defaultlib.MCU_Shell_Arch [mcu_shell_arch_default]
+Compiling architecture behavioral of entity xil_defaultlib.mcu_shell_arch_tb
+Built simulation snapshot MCU_Shell_Arch_tb_behav

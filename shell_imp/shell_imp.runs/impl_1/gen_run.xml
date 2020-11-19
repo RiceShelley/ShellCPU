@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1604366658">
-  <File Type="ROUTE-DRC-RPX" Name="design_1_wrapper_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="design_1_wrapper.mmi"/>
+  <File Type="ROUTE-CLK" Name="design_1_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="BITSTR-BMM" Name="design_1_wrapper_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="design_1_wrapper.nky"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="design_1_wrapper_timing_summary_routed.rpt"/>
+  <File Type="BG-BIN" Name="design_1_wrapper.bin"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="design_1_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="design_1_wrapper_route_status.pb"/>
+  <File Type="BG-BIT" Name="design_1_wrapper.bit"/>
+  <File Type="ROUTE-DRC-PB" Name="design_1_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="design_1_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="design_1_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="design_1_wrapper_routed.dcp"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="design_1_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="design_1_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="design_1_wrapper_bus_skew_routed.rpt"/>
+  <File Type="BG-BGN" Name="design_1_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="design_1_wrapper.sysdef"/>
+  <File Type="BITSTR-LTX" Name="design_1_wrapper.ltx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="design_1_wrapper_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="design_1_wrapper_postroute_physopt_bb.dcp"/>
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="design_1_wrapper_methodology_drc_routed.pb"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="design_1_wrapper_postplace_pwropt.dcp"/>
+  <File Type="RDI-RDI" Name="design_1_wrapper.vdi"/>
   <File Type="ROUTE-PWR" Name="design_1_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="design_1_wrapper_drc_routed.rpx"/>
   <File Type="ROUTE-PWR-SUM" Name="design_1_wrapper_power_summary_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="design_1_wrapper_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="design_1_wrapper_route_status.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="design_1_wrapper_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="design_1_wrapper_postroute_physopt_bb.dcp"/>
-  <File Type="RDI-RDI" Name="design_1_wrapper.vdi"/>
-  <File Type="BITSTR-LTX" Name="design_1_wrapper.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="design_1_wrapper.sysdef"/>
-  <File Type="BG-BGN" Name="design_1_wrapper.bgn"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="ROUTE-BUS-SKEW" Name="design_1_wrapper_bus_skew_routed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="design_1_wrapper_postplace_pwropt.dcp"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="design_1_wrapper_incremental_reuse_pre_placed.rpt"/>
   <File Type="PLACE-CTRL" Name="design_1_wrapper_control_sets_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="design_1_wrapper_utilization_placed.pb"/>
   <File Type="PLACE-UTIL" Name="design_1_wrapper_utilization_placed.rpt"/>
@@ -30,26 +44,12 @@
   <File Type="PHYSOPT-DCP" Name="design_1_wrapper_physopt.dcp"/>
   <File Type="BITSTR-RBT" Name="design_1_wrapper.rbt"/>
   <File Type="ROUTE-TIMING-RPX" Name="design_1_wrapper_timing_summary_routed.rpx"/>
-  <File Type="REPORTS-TCL" Name="design_1_wrapper_reports.tcl"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="design_1_wrapper_bus_skew_routed.rpx"/>
+  <File Type="REPORTS-TCL" Name="design_1_wrapper_reports.tcl"/>
   <File Type="OPT-DCP" Name="design_1_wrapper_opt.dcp"/>
   <File Type="OPT-DRC" Name="design_1_wrapper_drc_opted.rpt"/>
   <File Type="ROUTE-ERROR-DCP" Name="design_1_wrapper_routed_error.dcp"/>
   <File Type="BG-DRC" Name="design_1_wrapper.drc"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="design_1_wrapper_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-DCP" Name="design_1_wrapper_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="design_1_wrapper_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="design_1_wrapper_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="design_1_wrapper_drc_routed.pb"/>
-  <File Type="BG-BIT" Name="design_1_wrapper.bit"/>
-  <File Type="ROUTE-STATUS-PB" Name="design_1_wrapper_route_status.pb"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="design_1_wrapper_methodology_drc_routed.rpt"/>
-  <File Type="BG-BIN" Name="design_1_wrapper.bin"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="design_1_wrapper_timing_summary_routed.rpt"/>
-  <File Type="BITSTR-NKY" Name="design_1_wrapper.nky"/>
-  <File Type="BITSTR-BMM" Name="design_1_wrapper_bd.bmm"/>
-  <File Type="ROUTE-CLK" Name="design_1_wrapper_clock_utilization_routed.rpt"/>
-  <File Type="BITSTR-MMI" Name="design_1_wrapper.mmi"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/prog_mem.vhd">
@@ -263,28 +263,28 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_1"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_shell_cpu_top_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_display_ctrl_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_3"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_uart_controller_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_clk_div_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_byte_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_4"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_prog_mem_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_word_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_sync_word_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_2_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_uart_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_shell_cpu_top_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_display_ctrl_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_clk_wiz_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_programmer_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_data_mem_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_2_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_uart_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_and_gate_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_sync_byte_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_nexys_7seg_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_1_1"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_uart_0_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_word_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_prog_mem_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_4"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_byte_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_clk_div_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_uart_controller_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_sync_extern_0_3"/>
 </GenRun>

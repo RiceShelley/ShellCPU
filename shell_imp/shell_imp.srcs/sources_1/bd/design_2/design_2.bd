@@ -2,10 +2,44 @@
   "design": {
     "design_info": {
       "boundary_crc": "0x0",
+      "device": "xc7a100tcsg324-1",
       "name": "design_2",
       "synth_flow_mode": "Hierarchical",
       "tool_version": "2018.3"
     },
-    "design_tree": {}
+    "design_tree": {
+      "MCU_Shell_Arch_0": ""
+    },
+    "components": {
+      "MCU_Shell_Arch_0": {
+        "vlnv": "xilinx.com:module_ref:MCU_Shell_Arch:1.0",
+        "xci_name": "design_2_MCU_Shell_Arch_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "MCU_Shell_Arch",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "inr": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "outvalue": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      }
+    }
   }
 }

@@ -1,1 +1,4 @@
 sp dw 0x00FF
+num1 dw 6
+num2 dw 7
+ans dw 0

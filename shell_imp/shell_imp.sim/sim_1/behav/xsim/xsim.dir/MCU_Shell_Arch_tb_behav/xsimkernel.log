@@ -1,0 +1,4 @@
+Running: xsim.dir/MCU_Shell_Arch_tb_behav/xsimk -simmode gui -wdb MCU_Shell_Arch_tb_behav.wdb -simrunnum 0 -socket 36759
+Design successfully loaded
+Design Loading Memory Usage: 33396 KB (Peak: 33404 KB)
+Design Loading CPU Usage: 20 ms
